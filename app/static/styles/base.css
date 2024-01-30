@@ -59,3 +59,13 @@ nav {
 .navbar {
     background-color: var(--main-blue) ;
 }
+
+#navbarNav {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 5rem;
+}
+
+#navbarNav .navbar-nav .nav-item {
+    color: rgb(16, 75, 203);
+}

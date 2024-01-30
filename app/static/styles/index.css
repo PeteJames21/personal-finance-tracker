@@ -1,0 +1,157 @@
+:root {
+    --primary-color: #5c48ee;
+    --primary-color-dark: #0f1e6a;
+    --secondary-color: #f9fafe;
+    --text-color: #333333;
+    --white: #ffffff;
+    --max-width: 1200px;
+  }
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+body {
+    font-family: Roboto, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: var(--secondary-color)
+}
+
+nav {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-logo a {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+nav .link a {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--text-color);
+    text-decoration: none; /* Remove underline */
+    transition: 0.3s;
+}
+
+.link a:hover {
+    color: var(--primary-color);
+}
+
+.link .nav-btn {
+    padding: 0.5rem 2rem;
+    color: var(--white) !important;
+    background-color: var(--primary-color);
+    border-radius: 5px;
+}
+
+.link .nav-btn:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: auto;
+    padding: 1rem;
+    min-height: calc(100vh - 100px);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5rem; 
+  
+}
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.content-container h1 {
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 3.5rem;
+    color: var(--primary-color-dark);
+    margin-bottom: 1rem;
+}
+
+.heading-1 {
+    font-weight: 700;
+}
+
+.heading-2 {
+    font-weight: 700;
+    color: var(--primary-color);
+}
+
+.content-container p {
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 2rem;
+}
+
+.content-container button {
+    width: fit-content;
+    padding: 1rem;
+    font-size: 0.8rem;
+    white-space: nowrap;
+    background-color: var(--primary-color);
+    color: var(--white);
+    outline: none;
+    border: none;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    cursor: pointer;
+    border-radius: 0.5rem;
+}
+  
+.content-container button:hover {
+    background-color: var(--primary-color-dark);
+}
+
+.image-container {
+
+    display: flex;
+    justify-content: center;
+    align-items: end;
+}
+
+.image-container img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+.register-button {
+    /* Add your desired styles here */
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    /* Additional styles... */
+}

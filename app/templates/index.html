@@ -1,7 +1,40 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance Tracker</title>
+    <!-- <link rel="stylesheet" href="base.css"> -->
+    <link rel="stylesheet" type="text/css" href="../static/styles/index.css">
+</head>
+<body>
+    <nav>
+    <div class="nav-logo"><a href="#"></a>Our Logo</div>
+    <ul class="nav-links">
+        <li class="link"><a href="{{ url_for('login') }}">Log In</a></li>
+        <li class="link"><a href="{{ url_for('register') }}">Register</a></li> 
+        <li class="link"><a href="">Learn More</a></li>
+        <li class="link"><a href="">Features</a></li> 
+    </ul>
+    </nav>
+    <section class="container">
+        <div class="content-container">
+            <h1>
+                Track your <br>
+                <span class="heading-1">Income </span><br> 
+                and <span class="heading-1">Expenses </span><br> 
+            </h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, nostrum, ducimus modi repellendus tenetur itaque dolores numquam inventore non facere nesciunt explicabo architecto placeat provident natus voluptatem eaque veritatis saepe!
+            </p>
+            <div class="content-container">
+                <button><a class="register-button" href="{{ url_for('register') }}">Register</a></button>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="../static/images/landing.png" alt="hero-image">
+        </div>
 
-{% block content %}
-
-Welcome to the Personal finance Tracker
-
-{% endblock %}
+        
+    </section>
+</body>
+</html>

@@ -12,7 +12,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 def index():
     if current_user.is_authenticated:
         return redirect(url_for('home'))
-    return render_template('index.html', title='Home')
+    return render_template('index.html', title='Welcome Page')
 
 
 @app.route('/home')
