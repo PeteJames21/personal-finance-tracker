@@ -1,0 +1,139 @@
+/* Import base.css */
+/* styles for the account page: ie the home which offers a summary of a given user*/
+:root {
+    --profile_bg: #d9f0fd;
+    --profile_height: 60px;
+    --page_width: 80%; 
+}
+@import 'base.css'; /* importing base to maintain preferences */
+
+.incomes, .add-income{
+    width: var(--page_width);
+    margin: 15px auto;
+}
+/* Center the h3 */
+.incomes h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+/* Style for the income summary and add category */
+.income-summary {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    margin-top: 20px; /* Adjust the margin as needed */
+    margin: 15px auto;
+    background-color: var(--profile_bg);
+    height: var(--profile_height);
+}
+
+.income-summary .total-income {
+    
+    padding: 0px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--profile_height);
+ 
+    width: 30%;
+
+}
+.temp {
+    text-align: center;
+}
+
+
+/* Style for the totals section */
+.add-income {
+    display: flex;
+    flex-wrap: nowrap; /* Allow items to wrap to the next line if needed */
+    justify-content: space-between;
+    margin-top: 5px;
+    background-color: #f7f5f5; /* Background color for the entire section */
+    padding: 5px;
+    box-sizing: border-box;
+    align-items: end;
+}
+
+
+.add-income .income-details {
+    display: flex;
+    flex-wrap: nowrap; /* Allow items to wrap to the next line if needed */
+    justify-content: space-between;
+    margin-top: 5px;
+    background-color: #f7f5f5; /* Background color for the entire section */
+    padding: 5px;
+    box-sizing: border-box;
+    align-items: start;
+    margin: 0 auto;
+}
+
+
+/* Style for each total container */
+.income-details div {
+    width: calc(33.33% - 10px); 
+    margin-bottom: 5px; 
+    background-color: var(--profile_bg);; 
+    padding: 15px;
+    box-sizing: border-box;
+ 
+}
+
+.add-income .income-details .date,
+.add-income .income-details .input-amount,
+.add-income .income-details .input-category
+{
+    display: flex;
+    flex-direction: column; /* Stack child elements vertically */
+    align-items: start; /* Align child elements to the start (left) */
+}
+
+.date,
+.input-amount,
+.input-category,
+.input-category {
+    margin-bottom: 10px; /* Add some space between each input section */
+}
+
+/* Styling for logged listed incomes */
+
+.income-overview {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px auto;
+    background-color: #f7f5f5; /* Background color for the entire section */
+    padding: 15px;
+    box-sizing: border-box;
+    width: var(--page_width);
+    
+}
+.income-overview h4{
+    text-align: center;
+    
+}
+
+/* Style for each income details container */
+.income-list,
+.income-categories {
+    width: calc(50% - 10px); /* Adjust as needed */
+}
+
+
+/* Style for the title in each container */
+
+
+/* Style for the list items */
+.listed-income ol {
+   
+    padding: 0;
+    background-color: antiquewhite;
+    margin-left: 10px;
+}
+
+.listed-income li {
+
+    color: #555;
+}

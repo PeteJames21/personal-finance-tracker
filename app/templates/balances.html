@@ -1,0 +1,26 @@
+{% extends "/auth/base.html" %}
+
+{% block content %}
+  <h2>{{ title }}</h2>
+  <h3>{{ user['username'] }}'s {{ user['account'] }} Account</h3>
+
+  <h4>Income</h4>
+  <ul>
+    {% for category, value in user['account_categories']['income'].items() %}
+      <li>{{ category }}: ${{ value }}</li>
+    {% endfor %}
+  </ul>
+
+  <h4>Expenses</h4>
+  <ul>
+    {% for category, value in user['account_categories']['expense'].items() %}
+      <li>{{ category }}: ${{ value }}</li>
+    {% endfor %}
+  </ul>
+
+  <hr>
+
+  <h4>Total Income: ${{ total_income }}</h4>
+  <h4>Total Expenses: ${{ total_expenses }}</h4>
+  <h4>Balance: ${{ balance }}</h4>
+{% endblock %}

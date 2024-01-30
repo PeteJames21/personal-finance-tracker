@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="incomes">
+    <h3>Income</h3>
+    <div class="income-summary">
+        <div class="total-income">
+            <div class="current-month"><p>Month: </p></div>
+            <div class="monthly-income"><p>Total Monthly Income</p></div>
+        </div>
+        <div class="add-transaction">
+            <button> Add/Remove a Category</button>
+        </div>
+    </div>
+</section>
+<h3 class="temp">Add Income</h3>
+<section class="add-income">
+     <div class="income-details">
+        <div class="date">
+            <label for="dateInput">Date:</label>
+            <input type="date" id="dateInput" name="date" value="{{ today }}" />
+        </div>       
+        <div class="input-amount">
+            <label for="amountInput">Amount:</label>
+            <input type="text" id="amountInput" name="amount" placeholder="Enter amount" />
+        </div>       
+        <div class="input-category">
+            <label for="categoryDropdown">Category:</label>
+            <select id="categoryDropdown" name="category">
+                <option value="salary">Salary</option>
+                <option value="bonus">Bonus</option>
+                <option value="dividends">Dividends</option>
+            </select>
+        </div>
+        <div class="input-category">
+            <label for="textInput">Description:</label>
+            <input type="text" id="textInput" name="textInput" placeholder="Type here...">
+        </div>
+    </div>
+</section>
+<h3 class="temp">Income Overview</h3>
+<section class="income-overview">
+    <div class="income-list">
+        <div class="all-income">
+            <h4>All Income Logged</h4>
+        </div>
+        <div class="listed-income">
+            <ol>
+                <li>Salary</li>
+                <li>Bonus</li>
+                <li>Gifts</li>
+                <li>Dividends</li>
+            </ol>
+        </div>
+    </div>
+    <div class="income-categories">
+        <div class="label-income">
+            <h4>Top Categories</h4>
+        </div>
+        <div class="listed-income">
+            <ol>
+                <li>Salary</li>
+                <li>Bonus</li>
+                <li>Gifts</li>
+                <li>Dividends</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

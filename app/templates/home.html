@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<section class="profile-bar">
+    <h3>Account Summary</h3>
+    <div class="profile">
+        <div class="user-profile">
+            <div class="profile-photo"><img src="/ben.jpeg" alt=""></div>
+            <div class="name"><p>Welcome {{ user.username }}</p></div>
+        </div>
+        <div class="add-transaction">
+            <button> Add Transaction</button>
+        </div>
+    </div>
+</section>
+
+<section class="totals">
+    <div class="total-income">
+        <div class="total-label">
+            <h4>Total Income</h4>
+        </div>
+        <div class="total-amount">
+            <h4>$xx, xxx</h4>
+        </div>
+        <div class="top-items">
+            <h5>
+                Top Categories
+            </h5>
+        </div>
+        <div class="listed_items">
+            <ol>
+                <li>Salary</li>
+                <li>Bonus</li>
+                <li>Gifts</li>
+                <li>Dividends</li>
+
+            </ol>
+        </div>
+    </div>
+    <div class="total-expense">
+        <div class="total-label">
+            <h4>Total Expense</h4>
+        </div>
+        <div class="total-amount">
+            <h5>$xx, xxx</h5>
+        </div>
+        <div class="top-items">
+            <h5>
+                Top Categories
+            </h5>
+        </div>
+        <div class="listed_items">
+            <ol>
+                <li>Rent</li>
+                <li>Food</li>
+                <li>Clothes</li>
+                <li>Debts</li>
+            </ol>
+        </div>
+    </div>
+    <div class="balance">
+        <div class="total-label">
+            <h4>Net Income</h4>
+        </div>
+        <div class="total-amount">
+            <h4>$xx, xxx</h4>
+        </div>
+        <div class="top-items budget">
+            <h5>Average daily Income: </h5>
+            <h5>Average daily Expenditure: </h5>
+            <h5>Monthly Budget: </h5>
+            <h5>Amount Remaining: </h5>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

@@ -1,0 +1,118 @@
+:root {
+    --profile_bg: #d9f0fd;
+    --profile_height: 60px;
+
+    --main-blue: #79bbe7;
+    --bg-color: #f2f2f2;
+        
+}
+
+
+.profile-bar, .totals{
+    width: var(--page_width);
+    margin: 15px auto;
+}
+/* Center the h3 */
+.profile-bar h3 {
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* Style for the user profile and add transaction */
+.profile {
+    display: flex;
+    justify-content: space-around;
+    align-items:center;
+    margin-top: 20px; /* Adjust the margin as needed */
+    margin: 15px auto;
+    background-color: var(--profile_bg);
+    height: var(--profile_height);
+}
+
+.profile .user-profile {
+    /* background-color: blue; */
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    height: var(--profile_height);
+}
+.profile .user-profile .profile-photo {
+    margin-right: 20px; /* Add margin between photo and name */
+}
+
+.profile .user-profile img {
+    max-width: 30px; /* Set max width for the image */
+
+}
+
+.profile .user-profile .name {
+    text-align: left; /* Align the name to the left */
+}
+
+.profile .add-transaction {
+   /*  background-color: rgb(201, 117, 114); */
+    padding: 10px;
+    text-align: center;
+}
+
+/* this section styles the totals section */
+
+/* Style for the totals section */
+.totals {
+    display: flex;
+    flex-wrap: nowrap; /* Allow items to wrap to the next line if needed */
+    justify-content: space-between;
+    margin-top: 5px;
+    background-color: #f7f5f5; /* Background color for the entire section */
+    padding: 5px;
+    box-sizing: border-box;
+    align-items: start;
+}
+
+/* Style for each total container */
+.totals div {
+    width: calc(33.33% - 10px); /* Each container takes up one-third of the space with a small gap between them */
+    margin-bottom: 5px; /* Adjust margin as needed */
+    background-color: var(--profile_bg); /* Background color for individual containers */
+    padding: 15px;
+    box-sizing: border-box;
+    background-color: bisque;
+
+}
+.totals .total-label, .totals .total-amount, .totals .top-items {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-bottom: 5px;
+    text-align: center;
+}
+
+.totals .budget{
+    text-align: left;
+}
+/* Style for the total labels */
+.totals .total-label h3 {
+    margin-bottom: 10px;
+    color: #333; /* Text color for labels */
+    font-weight: ;
+    
+}
+
+/* Style for the total amounts */
+.totals .total-amount h3 {
+    color: green; /* Text color for amounts */
+}
+
+.listed_items ol {
+    margin-left: 5;
+    padding: 0;
+}
+
+.listed_items li {
+ 
+    color: #000000;
+    margin-bottom: 5px;
+}
+
+

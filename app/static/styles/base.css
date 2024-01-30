@@ -1,0 +1,61 @@
+:root {
+    --main-blue: #79bbe7;
+    --bg-color: #f2f2f2;
+    
+}
+
+/* contains styling for the navbar*/
+
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+
+/* Basic styling for the navbar */
+nav {
+    background-color: var(--main-blue);;
+    overflow: hidden;
+    color: white;
+    display: flex; /* Use flexbox */
+    justify-content: space-between; /* Distribute items with space between */
+}
+
+.logo{
+
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+/* Style for the logo */
+.logo a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Style for the other items on the right */
+.nav-items {
+    display: flex; /* Use flexbox for items */
+}
+
+.nav-items a {
+    padding: 14px 16px;
+    text-decoration: none;
+    color: white;
+}
+
+/* Change color on hover */
+.nav-items a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+
+.navbar {
+    background-color: var(--main-blue) ;
+}
