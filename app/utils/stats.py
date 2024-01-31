@@ -12,9 +12,15 @@ def get_totals_by_subcategories(transactions: list[dict]) -> list[tuple[str, int
 
     Sample output: [('food', 100), ('electricity', 40), ...]
     """
+    if not transactions:
+        return []
     totals = defaultdict(int)
     for t in transactions:
-        totals[t['subcategory']] += int(t['amount'])
+        # Transactions with no subcategory will be put under 'uncategorized'
+        if not t.get('subcategory'):
+            totals['Uncategorized'] += int(t['amount'])
+        else:
+            totals[t['subcategory']] += int(t['amount'])
 
     # Sort results by amount in descending order
     return sorted(list(totals.items()), key=lambda x: x[1], reverse=True)
