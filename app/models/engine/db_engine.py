@@ -1,6 +1,8 @@
 import json
 import uuid
 from ..user import User
+from datetime import datetime
+from typing import Union
 
 
 class DBEngine:
@@ -19,7 +21,9 @@ class DBEngine:
                 json.dump(self.db, f)
 
     def get_transactions(self, username, profile, account=None, category=None,
-                         subcategory=None, limit=None) -> list[dict]:
+                         subcategory=None, limit=None,
+                         from_: Union[datetime, str, None] = None,
+                         to: Union[datetime, str, None] = None) -> list[dict]:
         """
         Fetch transactions using the specified criteria.
 
@@ -53,21 +57,28 @@ class DBEngine:
                 lambda t: t.get('subcategory') == subcategory,
                 transactions
             ))
+        # Filter results by time
+        if not from_ and not to:
+            # Return all values if no datetime filters are specified
+            return transactions[:limit]
+        if to and not from_:
+            raise ValueError("'from' cannot be None if 'to' is specified")
+        if not to:
+            # Set upper datime bound to the current date
+            to = datetime.now()
+        # Convert to datetime if str values are passed
+        if type(from_) is str:
+            from_ = datetime.fromisoformat(from_)
+        if type(to) is str:
+            to = datetime.fromisoformat(to)
+        # Apply the filter
+        transactions_filtered = []
+        for t in transactions:
+            dt = datetime.fromisoformat(t['time'])
+            if ((dt - from_).days >= 0) and ((to - dt).days >= 0):
+                transactions_filtered.append(t)
 
-        return transactions[:limit]
-
-    def add_user(self, user: User):
-        """Add a new user to the database."""
-        if user.username in self.db:
-            raise ValueError(f"The username '{user.username}' already exists")
-        if not user.id:
-            user.id = len(self.db.keys()) + 1
-        self.db[user.username] = {
-            'email': user.email,
-            'password': user.password,
-            'id': user.id,
-            'profiles': {},
-        }
+        return transactions_filtered[:limit]
 
     def add_profile(self, username, profile, description=''):
         """Add a new profile under the specified user."""
@@ -101,6 +112,9 @@ class DBEngine:
         trans_details['id'] = trans_id
         trans_details['user_id'] = username
         trans_details['category'] = category
+        # Set date to the current one if none is specified
+        if not trans_details.get('time'):
+            trans_details['time'] = datetime.now().strftime("%Y-%m-%d")
 
         account_debited = trans_details.get('account_debited')
         account_credited = trans_details.get('account_credited')
