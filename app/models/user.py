@@ -9,11 +9,12 @@ class User(UserMixin):
         self.id = user_id
         self.email = email
         self.password = password
+        
 
     def __repr__(self):
         """Return a formal representation of self."""
         return (f"User(username='{self.username}', "
-                f"email='{self.email}', id='{self.id})'")
+                f"email='{self.email}', id='{self.id}, profiles={self.profiles})'")
 
     def get_id(self):
         """

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField, SelectField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 
@@ -22,3 +22,10 @@ class RegistrationForm(FlaskForm):
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
+class TransactionForm(FlaskForm):
+    category = SelectField('Category', choices=[('incomes', 'Income'), ('expenses', 'Expense'), ('transfers', 'Transfer')], validators=[DataRequired()])
+    amount = FloatField('Amount', validators=[DataRequired()])
+    account_debited = StringField('Account Debited')
+    account_credited = StringField('Account Credited')
+    submit = SubmitField('Add Transaction')

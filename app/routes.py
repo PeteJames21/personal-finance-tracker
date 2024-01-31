@@ -1,7 +1,7 @@
 """Handles the urls that the module supports"""
 from app import app, db
 from flask import render_template, flash, redirect, url_for
-from app.forms import LoginForm, RegistrationForm
+from app.forms import LoginForm, RegistrationForm, TransactionForm
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -100,3 +100,39 @@ def logout():
     flash('You have been logged out!')
     logout_user()
     return redirect(url_for('index'))
+
+# Route for adding a transaction
+@app.route('/add_transaction', methods=['GET', 'POST'])
+@login_required
+def add_transaction():
+    username = current_user.username
+    user_profile = db.get_profiles(username)[0]
+    form = TransactionForm()
+    if form.validate_on_submit():
+        username = current_user.username
+        profile = user_profile
+        category = form.category.data
+        amount = form.amount.data
+        account_debited = form.account_debited.data
+        account_credited = form.account_credited.data
+
+        # Create a Transaction object
+        transaction_details = {
+            'amount': amount,
+            'account_debited': account_debited,
+            'account_credited': account_credited,
+            # Include other transaction details here
+        }
+
+        try:
+            db.add_transaction(username, profile, category, **transaction_details)
+            db.save()
+            flash('Transaction added successfully', 'success')
+            return redirect(url_for('home'))  # Redirect to the dashboard or another page
+        except ValueError as e:
+            error_message = str(e)
+            flash(error_message, 'error')
+
+    return render_template('add_transaction.html', form=form)
+
+

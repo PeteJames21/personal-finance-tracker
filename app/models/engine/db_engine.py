@@ -179,7 +179,6 @@ class DBEngine:
         """
         if username not in self.db:
             return None
-
         return User(
             username=username,
             user_id=self.db[username]['id'],
