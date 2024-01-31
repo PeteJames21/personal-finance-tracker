@@ -10,7 +10,8 @@ def get_totals_by_subcategories(transactions: list[dict]) -> list[tuple[str, int
     """
     Compute totals by subcategory.
 
-    Sample output: [('food', 100), ('electricity', 40), ...]
+    Transactions with no subcategory will be grouped under 'Uncategorized'.
+    Sample output: [('Food', 100), ('Electricity', 40), ...]
     """
     if not transactions:
         return []
