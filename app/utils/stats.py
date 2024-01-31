@@ -6,9 +6,10 @@ def get_transactions_total(transactions: list[dict]):
     return sum(int(t['amount']) for t in transactions)
 
 
-def get_totals_by_subcategories(transactions: list[dict]) -> list[tuple[str, int]]:
+def get_totals_by_subcategories(transactions: list[dict],
+                                n: int = None) -> list[tuple[str, int]]:
     """
-    Compute totals by subcategory.
+    Compute totals by subcategory and return the top n subcategories.
 
     Transactions with no subcategory will be grouped under 'Uncategorized'.
     Sample output: [('Food', 100), ('Electricity', 40), ...]
@@ -24,4 +25,7 @@ def get_totals_by_subcategories(transactions: list[dict]) -> list[tuple[str, int
             totals[t['subcategory']] += int(t['amount'])
 
     # Sort results by amount in descending order
-    return sorted(list(totals.items()), key=lambda x: x[1], reverse=True)
+    totals = list(totals.items())
+    if n and n > 0:
+        totals = totals[:n]
+    return sorted(totals, key=lambda x: x[1], reverse=True)
