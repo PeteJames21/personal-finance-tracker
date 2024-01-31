@@ -112,6 +112,9 @@ class DBEngine:
         trans_details['id'] = trans_id
         trans_details['user_id'] = username
         trans_details['category'] = category
+        # Set date to the current one if none is specified
+        if not trans_details.get('time'):
+            trans_details['time'] = datetime.now().strftime("%Y-%m-%d")
 
         account_debited = trans_details.get('account_debited')
         account_credited = trans_details.get('account_credited')
