@@ -1,7 +1,7 @@
 """Handles the urls that the module supports"""
 from app import app, db
 from flask import render_template, flash, redirect, url_for
-from app.forms import LoginForm, RegistrationForm, TransactionForm
+from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountForm
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -115,12 +115,14 @@ def add_transaction():
         amount = form.amount.data
         account_debited = form.account_debited.data
         account_credited = form.account_credited.data
+        subcategory = form.subcategory.data
 
         # Create a Transaction object
         transaction_details = {
             'amount': amount,
             'account_debited': account_debited,
             'account_credited': account_credited,
+            'subcategory' : subcategory
             # Include other transaction details here
         }
 
@@ -134,5 +136,29 @@ def add_transaction():
             flash(error_message, 'error')
 
     return render_template('add_transaction.html', form=form)
+
+# Route for adding a an account
+@app.route('/add_account', methods=['GET', 'POST'])
+@login_required
+def add_account():
+    username = current_user.username
+    user_profile = db.get_profiles(username)[0]
+    form = AddAccountForm()
+    if form.validate_on_submit():
+        username = current_user.username
+        profile = user_profile  
+        account = form.account.data
+        balance = form.balance.data
+        description = form.description.data
+
+        try:
+            db.add_account(username, profile, account, balance, description)
+            db.save()
+            flash('Account added successfully', 'success')
+            return redirect(url_for('home')) 
+        except ValueError as e:
+            error_message = str(e)
+            flash(error_message, 'error')
+    return render_template('add_account.html', form=form)
 
 

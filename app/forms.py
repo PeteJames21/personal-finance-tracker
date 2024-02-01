@@ -1,5 +1,6 @@
+import datetime
 from flask_wtf import FlaskForm
-from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField, SelectField
+from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField, SelectField, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
 
 
@@ -24,8 +25,16 @@ class RegistrationForm(FlaskForm):
     submit = SubmitField('Sign Up')
 
 class TransactionForm(FlaskForm):
-    category = SelectField('Category', choices=[('incomes', 'Income'), ('expenses', 'Expense'), ('transfers', 'Transfer')], validators=[DataRequired()])
+    date = DateField('Date', default=datetime.date.today, validators=[DataRequired()])
+    category = SelectField('Type of Transaction', choices=[('incomes', 'Income'), ('expenses', 'Expense'), ('transfers', 'Transfer')], validators=[DataRequired()])
     amount = FloatField('Amount', validators=[DataRequired()])
     account_debited = StringField('Account Debited')
     account_credited = StringField('Account Credited')
+    subcategory = StringField('Subcategory')
     submit = SubmitField('Add Transaction')
+
+class AddAccountForm(FlaskForm):
+    account = StringField('Account Name', validators=[DataRequired()])
+    balance = FloatField('Balance', validators=[DataRequired()])
+    description = StringField('Description')
+    submit = SubmitField('Add Account')

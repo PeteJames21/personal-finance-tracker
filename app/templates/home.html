@@ -10,13 +10,7 @@
             <div class="name"><p>Welcome {{ user.username }}</p></div>
         </div>
         <div class="add-transaction">
-            <a href="{{ url_for('add_transaction') }}"><button> Add Income</button></a>
-        </div>
-        <div class="add-transaction add-expense">
-            <a href="{{ url_for('add_transaction') }}"><button> Add Expense</button></a>
-        </div>
-        <div class="add-transaction transfer">
-            <a href="{{ url_for('add_transaction') }}"><button> Transfer</button></a>
+            <a href="{{ url_for('add_transaction') }}"><button> Add a Transaction</button></a>
         </div>
     </div>
 </section>
