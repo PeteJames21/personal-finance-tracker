@@ -80,14 +80,40 @@ class DBEngine:
 
         return transactions_filtered[:limit]
 
-    def add_profile(self, username, profile, description=''):
-        """Add a new profile under the specified user."""
+    def add_user(self, user: User):
+        """Add a new user to the database."""
+        if user.username in self.db:
+            raise ValueError(f"The username '{user.username}' already exists")
+        if not user.id:
+            user.id = len(self.db.keys()) + 1
+        self.db[user.username] = {
+            'email': user.email,
+            'password': user.password,
+            'id': user.id,
+            'default_profile': '',
+            'profiles': {},
+        }
+        self.add_profile(user.username, 'personal')
+
+    def add_profile(self, username, profile, description='', default=False):
+        """
+        Add a new profile under the specified user.
+
+        @default is used to specify whether to set this profile as the
+        default one. If no other profile exist under this user, @profile
+        will be set as the default one.
+        """
+        if len(self.get_profiles(username)) == 0:
+            default = True
         if profile in self.db[username]['profiles']:
             raise ValueError(f"The profile '{profile}' already exists")
         self.db[username]['profiles'][profile] = {
             'description': description,
             'accounts': {}
         }
+        if default:
+            self.db[username]['default_profile'] = profile
+            return
 
     def add_account(self, username, profile, account,
                     balance=0, description=''):
@@ -197,7 +223,8 @@ class DBEngine:
             username=username,
             user_id=self.db[username]['id'],
             password=self.db[username]['password'],
-            email=self.db[username]['email']
+            email=self.db[username]['email'],
+            default_profile=self.db[username]['default_profile']
         )
 
     def get_all_usernames(self):
@@ -211,6 +238,21 @@ class DBEngine:
         :return: A User instance or None if @id_ is not found
         """
         raise NotImplementedError
+
+    def set_default_profile(self, username, profile):
+        """
+        Set the default profile for the given username.
+
+        The profile must already exist, otherwise an IntegrityError is raised.
+        """
+        if profile not in self.get_profiles(username):
+            raise IntegrityError("Profile does not exist")
+        self.db[username]['default_profile'] = profile
+
+    def reload(self):
+        """Reload data from storage."""
+        with open(self.__file, encoding='utf-8') as f:
+            self.db = json.load(f)
 
 
 class IntegrityError(Exception):

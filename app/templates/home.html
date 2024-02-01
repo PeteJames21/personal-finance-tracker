@@ -21,7 +21,9 @@
             <h4>Total Income</h4>
         </div>
         <div class="total-amount">
-            <h4>$xx, xxx</h4>
+            {% if stats %}
+                <h4>{{ stats['total_income'] }}</h4>
+            {% endif %}
         </div>
         <div class="top-items">
             <h5>
@@ -29,13 +31,13 @@
             </h5>
         </div>
         <div class="listed_items">
-            <ol>
-                <li>Salary</li>
-                <li>Bonus</li>
-                <li>Gifts</li>
-                <li>Dividends</li>
-
-            </ol>
+            {% if stats %}
+                <ol>
+                    {% for item in stats['top_incomes'] %}
+                        <li>{{ item[0] }}: {{ item[1] }}</li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
         </div>
     </div>
     <div class="total-expense">
@@ -43,7 +45,9 @@
             <h4>Total Expense</h4>
         </div>
         <div class="total-amount">
-            <h5>$xx, xxx</h5>
+            {% if stats %}
+                <h4>{{ stats['total_expense'] }}</h4>
+            {% endif %}
         </div>
         <div class="top-items">
             <h5>
@@ -52,10 +56,13 @@
         </div>
         <div class="listed_items">
             <ol>
-                <li>Rent</li>
-                <li>Food</li>
-                <li>Clothes</li>
-                <li>Debts</li>
+                {% if stats %}
+                <ol>
+                    {% for item in stats['top_expenses'] %}
+                        <li>{{ item[0] }}: {{ item[1] }}</li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
             </ol>
         </div>
     </div>
@@ -64,13 +71,13 @@
             <h4>Net Income</h4>
         </div>
         <div class="total-amount">
-            <h4>$xx, xxx</h4>
+            {% if stats %}
+                <h4>{{ stats['net_income'] }}</h4>
+            {% endif %}
         </div>
         <div class="top-items budget">
             <h5>Average daily Income: </h5>
             <h5>Average daily Expenditure: </h5>
-            <h5>Monthly Budget: </h5>
-            <h5>Amount Remaining: </h5>
         </div>
     </div>
 </section>

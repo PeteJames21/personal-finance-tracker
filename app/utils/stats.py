@@ -1,4 +1,5 @@
 from collections import defaultdict
+from app import db
 
 
 def get_transactions_total(transactions: list[dict]):
@@ -29,3 +30,25 @@ def get_totals_by_subcategories(transactions: list[dict],
     if n and n > 0:
         totals = totals[:n]
     return sorted(totals, key=lambda x: x[1], reverse=True)
+
+
+def get_summary_stats(username, profile, from_=None, to=None):
+    """Get transaction summaries for the given user profile."""
+    incomes = db.get_transactions(username, profile, category='incomes',
+                                  from_=from_, to=to)
+    expenses = db.get_transactions(username, profile, category='expenses',
+                                   from_=from_, to=to)
+
+    top_incomes = get_totals_by_subcategories(incomes, n=5)
+    top_expenses = get_totals_by_subcategories(expenses, n=5)
+    total_income = get_transactions_total(incomes)
+    total_expense = get_transactions_total(expenses)
+    net_income = total_income - total_expense
+
+    return {
+        'top_incomes': top_incomes,
+        'top_expenses': top_expenses,
+        'total_income': total_income,
+        'total_expense': total_expense,
+        'net_income': net_income
+    }

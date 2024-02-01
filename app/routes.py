@@ -5,6 +5,8 @@ from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountFo
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
+from .utils.stats import get_summary_stats
+from .utils.flask_utils import get_current_profile
 
 
 @app.route('/')
@@ -18,8 +20,13 @@ def index():
 @app.route('/home')
 @login_required
 def home():
+    db.reload()
+    profile = get_current_profile()
+    stats = {}
+    if profile:
+        stats = get_summary_stats(current_user.username, profile)
     return render_template('home.html', title='Home',
-                           user=current_user)
+                           user=current_user, stats=stats)
 
 
 @app.route('/login', methods=['POST', 'GET'])
