@@ -123,13 +123,15 @@ def add_transaction():
         account_debited = form.account_debited.data
         account_credited = form.account_credited.data
         subcategory = form.subcategory.data
+        date = form.date.data.strftime("%Y-%m-%d")
 
         # Create a Transaction object
         transaction_details = {
             'amount': amount,
             'account_debited': account_debited,
             'account_credited': account_credited,
-            'subcategory' : subcategory
+            'subcategory' : subcategory,
+            'time': date,
             # Include other transaction details here
         }
 
@@ -153,7 +155,7 @@ def add_account():
     form = AddAccountForm()
     if form.validate_on_submit():
         username = current_user.username
-        profile = user_profile  
+        profile = user_profile
         account = form.account.data
         balance = form.balance.data
         description = form.description.data
@@ -162,10 +164,8 @@ def add_account():
             db.add_account(username, profile, account, balance, description)
             db.save()
             flash('Account added successfully', 'success')
-            return redirect(url_for('home')) 
+            return redirect(url_for('home'))
         except ValueError as e:
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form)
-
-
