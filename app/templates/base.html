@@ -16,14 +16,15 @@
 <body>
 
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Logo</a>
+<nav class="navbar navbar-expand-lg navbar-light">
+    <a  class="navbar-brand" href="#">Logo</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
+          
             <a class="nav-item nav-link" href="{{ url_for('income') }}">Income</a>
             <a class="nav-item nav-link" href="{{ url_for('expense') }}">Expense</a>
             <a class="nav-item nav-link" href="#Transfers">Transfers</a>
@@ -32,6 +33,7 @@
         </div>
     </div>
 </nav>
+
 
 <!-- Content Section -->
 <div class="container mt-4">
@@ -56,6 +58,57 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+    document.getElementById('toggleDateFilter').addEventListener('click', function() {
+        var dateOptions = document.querySelector('.date-options');
+        dateOptions.style.display = (dateOptions.style.display === 'none') ? 'block' : 'none';
+    });
+</script>
+<script>
+    // JavaScript to dynamically create options in the dropdown
+    var profiles = {{ profiles | tojson | safe }};  // Access Jinja2 variable
 
+    function toggleDropdown() {
+        var dropdown = document.getElementById("profileDropdown");
+
+        // Clear existing options
+        dropdown.innerHTML = "";
+
+        // Populate options from profiles list
+        profiles.forEach(function (profile) {
+            var option = document.createElement("a");
+            option.textContent = profile;
+            option.href = "#";  // Set the appropriate href
+            option.onclick = function () {
+                switchProfile(profile);
+                toggleDropdown();  // Hide dropdown after selection
+            };
+            dropdown.appendChild(option);
+        });
+
+        // Show/hide dropdown
+        dropdown.style.display = (dropdown.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function switchProfile(selectedProfile) {
+        // Perform any additional actions when a profile is selected
+        // For example, you can send the selectedProfile to /home
+        window.location.href = "/home?selectedProfile=" + selectedProfile;
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function (event) {
+        if (!event.target.matches('.dropbtn')) {
+            var dropdowns = document.getElementsByClassName("dropdown-content");
+            for (var i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.style.display === 'block') {
+                    openDropdown.style.display = 'none';
+                }
+            }
+        }
+    }
+</script>
+</script>
 </body>
 </html>

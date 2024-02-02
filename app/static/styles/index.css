@@ -5,6 +5,7 @@
     --text-color: #333333;
     --white: #ffffff;
     --max-width: 1200px;
+    --button-color: #5c48ee;
   }
 
 * {
@@ -116,7 +117,7 @@ nav .link a {
     padding: 1rem;
     font-size: 0.8rem;
     white-space: nowrap;
-    background-color: var(--primary-color);
+    background-color: var(--button-color);
     color: var(--white);
     outline: none;
     border: none;
@@ -150,8 +151,8 @@ nav .link a {
 }
 
 .register-button {
-    /* Add your desired styles here */
+
     color: rgb(255, 255, 255);
     text-decoration: none;
-    /* Additional styles... */
+  
 }

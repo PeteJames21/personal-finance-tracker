@@ -2,31 +2,66 @@
     --profile_bg: #d9f0fd;
     --profile_height: 60px;
 
-    --main-blue: #79bbe7;
+    --main-blue: #9ceaff;
     --bg-color: #f2f2f2;
         
 }
-
+* {
+    margin: 0;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
 
 .profile-bar, .totals{
     width: var(--page_width);
-    margin: 15px auto;
+    margin: 0px auto;
 }
-/* Center the h3 */
-.profile-bar h3 {
+
+.head-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+ 
+}
+
+.current-profile,
+.header-summary,
+.switch-profiles {
+    width: 15%; /* Adjust as needed */
+    box-sizing: border-box;
+    
+}
+.current-profile, .current_user{
+    white-space:nowrap;
+    margin-left: 5px;
+   
+
+
+}
+.header-summary {
+    width: 70%; /* Adjust as needed */
     text-align: center;
-    margin-top: 10px;
 }
+
+/* Additional styling if desired */
+.head-bar h3 {
+    margin: 0;
+}
+
+
 
 /* Style for the user profile and add transaction */
 .profile {
     display: flex;
     justify-content: space-around;
     align-items:center;
-    margin-top: 20px; /* Adjust the margin as needed */
+    margin-top: 5px; 
     margin: 15px auto;
     background-color: var(--profile_bg);
     height: var(--profile_height);
+    position: relative;
 }
 
 .profile .user-profile {
@@ -37,18 +72,6 @@
     align-items: center;
     height: var(--profile_height);
 }
-.profile .user-profile .profile-photo {
-    margin-right: 20px; /* Add margin between photo and name */
-}
-
-.profile .user-profile img {
-    max-width: 30px; /* Set max width for the image */
-
-}
-
-.profile .user-profile .name {
-    text-align: left; /* Align the name to the left */
-}
 
 .profile .add-transaction {
    /*  background-color: rgb(201, 117, 114); */
@@ -56,7 +79,77 @@
     text-align: center;
 }
 
-/* this section styles the totals section */
+.profile-bar{
+    background-color: #79bbe7;
+    margin-top: 0;
+}
+/* style for dropdown calendar */
+.profile .date-options {
+        display: none;
+        position: absolute; 
+        top: 100%; 
+        left: 0; 
+        background-color: #f7f5f5;
+        border: 1px solid #ccc;
+        padding: 10px;
+        border-radius: 5px;
+        z-index: 1; 
+}
+
+
+
+#dateFilterForm {
+    display: flex;
+    background-color: #f7f5f5;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Style for the labels */
+
+
+/* Style for the date inputs */
+#dateFilterForm input[type="date"] {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Style for the submit button */
+#dateFilterForm button {
+    padding: 3px;
+    background-color: #5c48ee;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+/* Change button color on hover */
+#dateFilterForm button:hover {
+    background-color: #4a3aa5;
+}
+
+/* style add account */
+#add-p{
+    white-space: nowrap;
+    
+   
+}
+/* styling for switch options */
+.switch-profiles {
+    display: flex;
+    padding: 10px;
+    width: 50%;
+ 
+}
+
+/* Style for the label */
+
+
+
+
 
 /* Style for the totals section */
 .totals {
@@ -107,12 +200,16 @@
 .listed_items ol {
     margin-left: 5;
     padding: 0;
+    white-space:nowrap;
+ 
 }
 
 .listed_items li {
  
     color: #000000;
     margin-bottom: 5px;
+
+    
 }
 
 

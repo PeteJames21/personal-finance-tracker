@@ -1,6 +1,6 @@
 """Handles the urls that the module supports"""
 from app import app, db
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, request
 from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountForm
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
@@ -17,16 +17,23 @@ def index():
     return render_template('index.html', title='Welcome Page')
 
 
-@app.route('/home')
+@app.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
     db.reload()
     profile = get_current_profile()
     stats = {}
+    all_profiles = db.get_profiles(current_user.username)
+
+
+    start_date = request.args.get('startDate', '')
+    end_date = request.args.get('endDate', '')
+    selected_profile = request.args.get('selectedProfile', '')
+ 
     if profile:
         stats = get_summary_stats(current_user.username, profile)
     return render_template('home.html', title='Home',
-                           user=current_user, stats=stats)
+                           user=current_user, stats=stats, profile=profile, d1=start_date, d2=end_date, profiles=all_profiles, sp= selected_profile)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -124,6 +131,7 @@ def add_transaction():
         account_credited = form.account_credited.data
         subcategory = form.subcategory.data
         date = form.date.data.strftime("%Y-%m-%d")
+        description = form.description.data
 
         # Create a Transaction object
         transaction_details = {
@@ -132,6 +140,7 @@ def add_transaction():
             'account_credited': account_credited,
             'subcategory' : subcategory,
             'time': date,
+            'description' : description
             # Include other transaction details here
         }
 
@@ -169,3 +178,5 @@ def add_account():
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form)
+
+

@@ -31,6 +31,7 @@ class TransactionForm(FlaskForm):
     account_debited = StringField('Account Debited')
     account_credited = StringField('Account Credited')
     subcategory = StringField('Subcategory')
+    description = StringField('Description')
     submit = SubmitField('Add Transaction')
 
 class AddAccountForm(FlaskForm):
