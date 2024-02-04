@@ -6,7 +6,7 @@ from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from .utils.stats import get_summary_stats
-from .utils.flask_utils import get_current_profile
+from .utils.flask_utils import get_current_profile, get_request_args
 
 
 @app.route('/')
@@ -21,18 +21,14 @@ def index():
 @login_required
 def home():
     db.reload()
-    profile = get_current_profile()
-    stats = {}
     all_profiles = db.get_profiles(current_user.username)
-
-    start_date = request.args.get('startDate', '')
-    end_date = request.args.get('endDate', '')
-    selected_profile = request.args.get('selectedProfile', '')
-
-    if profile:
-        stats = get_summary_stats(current_user.username, profile)
+    data = get_request_args(request)
+    stats = get_summary_stats(current_user.username, data['profile'])
+    data.update(stats)
     return render_template('home.html', title='Home',
-                           user=current_user, stats=stats, profile=profile, d1=start_date, d2=end_date, profiles=all_profiles, sp= selected_profile)
+                           user=current_user,
+                           profiles=all_profiles,  # Needed by JS.
+                           data=data)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -119,11 +115,10 @@ def logout():
 @login_required
 def add_transaction():
     username = current_user.username
-    user_profile = db.get_profiles(username)[0]
     form = TransactionForm()
     if form.validate_on_submit():
         username = current_user.username
-        profile = user_profile
+        profile = get_current_profile()
         category = form.category.data
         amount = form.amount.data
         account_debited = form.account_debited.data
@@ -154,12 +149,13 @@ def add_transaction():
 
     return render_template('add_transaction.html', form=form)
 
+
 # Route for adding a an account
 @app.route('/add_account', methods=['GET', 'POST'])
 @login_required
 def add_account():
     username = current_user.username
-    user_profile = db.get_profiles(username)[0]
+    user_profile = get_current_profile()
     form = AddAccountForm()
     if form.validate_on_submit():
         username = current_user.username

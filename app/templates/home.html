@@ -6,7 +6,7 @@
     <div class="head-bar">
         <div class="current_user">
             <div class="current_user">Current User: {{ current_user.username }}</div>
-            <div class="current-profile">Current Profile: {{ profile }}</div>
+            <div class="current-profile">Current Profile: {{ data[profile] }}</div>
         </div>
 
         <div class="header-summary"><h3>Account Summary</h3></div>
@@ -23,9 +23,9 @@
             </div>
         </div>
     </div>
-  <!--   <h5>{{ d1 }}</h5>
-    <h5>{{ d2 }}</h5> -->
-    {{ sp }} <!-- will display the profile that was selected -->
+  <!--   <h5>{{ data['start_date'] }}</h5>
+    <h5>{{ data['end_date'] }}</h5> -->
+    {{ data['profile'] }} <!-- will display the profile that was selected -->
 
 
     <div class="profile">
@@ -58,8 +58,8 @@
             <h4>Total Income</h4>
         </div>
         <div class="total-amount">
-            {% if stats %}
-                <h4>{{ stats['total_income'] }}</h4>
+            {% if data %}
+                <h4>{{ data['total_income'] }}</h4>
             {% endif %}
         </div>
         <div class="top-items">
@@ -68,9 +68,9 @@
             </h5>
         </div>
         <div class="listed_items">
-            {% if stats %}
+            {% if data %}
                 <ol>
-                    {% for item in stats['top_incomes'] %}
+                    {% for item in data['top_incomes'] %}
                         <li>{{ item[0] }}: {{ item[1] }}</li>
                     {% endfor %}
                 </ol>
@@ -82,8 +82,8 @@
             <h4>Total Expense</h4>
         </div>
         <div class="total-amount">
-            {% if stats %}
-                <h4>{{ stats['total_expense'] }}</h4>
+            {% if data %}
+                <h4>{{ data['total_expense'] }}</h4>
             {% endif %}
         </div>
         <div class="top-items">
@@ -93,9 +93,9 @@
         </div>
         <div class="listed_items">
             <ol>
-                {% if stats %}
+                {% if data %}
                 <ol>
-                    {% for item in stats['top_expenses'] %}
+                    {% for item in data['top_expenses'] %}
                         <li>{{ item[0] }}: {{ item[1] }}</li>
                     {% endfor %}
                 </ol>
@@ -108,8 +108,8 @@
             <h4>Net Income</h4>
         </div>
         <div class="total-amount">
-            {% if stats %}
-                <h4>{{ stats['net_income'] }}</h4>
+            {% if data %}
+                <h4>{{ data['net_income'] }}</h4>
             {% endif %}
         </div>
         <div class="top-items budget">
