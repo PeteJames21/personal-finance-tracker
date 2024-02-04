@@ -12,7 +12,6 @@ from .models.user import User
 
 app = Flask(__name__)
 app.config.from_object(Config)
-print(app.secret_key)
 Session(app)
 db = DBEngine()
 login_manager = LoginManager(app)
