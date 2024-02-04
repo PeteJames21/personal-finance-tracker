@@ -8,7 +8,7 @@
             <div class="current_user">Current User: {{ current_user.username }}</div>
             <div class="current-profile">Current Profile: {{ profile }}</div>
         </div>
-        
+
         <div class="header-summary"><h3>Account Summary</h3></div>
         <div class="add-transaction" id="add-p">
             <a href="#"><button> Add a Profile</button></a>
@@ -26,8 +26,8 @@
   <!--   <h5>{{ d1 }}</h5>
     <h5>{{ d2 }}</h5> -->
     {{ sp }} <!-- will display the profile that was selected -->
-   
-    
+
+
     <div class="profile">
         <div class="date-filter">
             <button id="toggleDateFilter">Filter Summary by Date</button>
@@ -35,10 +35,10 @@
                 <form action="#" method="get" id="dateFilterForm" >
                     <label for="startDate">Start Date:</label>
                     <input type="date" id="startDate" name="startDate" required>
-    
+
                     <label for="endDate">End Date:</label>
                     <input type="date" id="endDate" name="endDate" required>
-    
+
                     <button type="submit">Apply Filter</button>
                 </form>
             </div>

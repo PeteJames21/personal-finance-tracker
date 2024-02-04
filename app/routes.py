@@ -25,11 +25,10 @@ def home():
     stats = {}
     all_profiles = db.get_profiles(current_user.username)
 
-
     start_date = request.args.get('startDate', '')
     end_date = request.args.get('endDate', '')
     selected_profile = request.args.get('selectedProfile', '')
- 
+
     if profile:
         stats = get_summary_stats(current_user.username, profile)
     return render_template('home.html', title='Home',
@@ -178,5 +177,3 @@ def add_account():
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form)
-
-
