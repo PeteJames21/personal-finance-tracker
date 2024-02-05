@@ -3,7 +3,7 @@
 :root {
     --profile_bg: #d9f0fd;
     --profile_height: 60px;
-    --page_width: 80%; 
+    --page_width: 80%;
 }
 @import 'base.css'; /* importing base to maintain preferences */
 
@@ -30,14 +30,14 @@
 }
 
 .income-summary .total-income {
-    
+
     padding: 0px;
     text-align: center;
     display: flex;
     align-items: center;
     justify-content: space-between;
     height: var(--profile_height);
- 
+
     width: 30%;
 
 }
@@ -74,12 +74,12 @@
 
 /* Style for each total container */
 .income-details div {
-    width: calc(33.33% - 10px); 
-    margin-bottom: 5px; 
-    background-color: var(--profile_bg);; 
+    width: calc(33.33% - 10px);
+    margin-bottom: 5px;
+    background-color: var(--profile_bg);;
     padding: 15px;
     box-sizing: border-box;
- 
+
 }
 
 .add-income .income-details .date,
@@ -108,11 +108,11 @@
     padding: 15px;
     box-sizing: border-box;
     width: var(--page_width);
-    
+
 }
 .income-overview h4{
     text-align: center;
-    
+
 }
 
 /* Style for each income details container */
@@ -127,7 +127,7 @@
 
 /* Style for the list items */
 .listed-income ol {
-   
+
     padding: 0;
     background-color: antiquewhite;
     margin-left: 10px;

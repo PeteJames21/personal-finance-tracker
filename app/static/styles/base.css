@@ -2,7 +2,7 @@
     --main-blue: #f00c1b;
     --bg-color: #f2f2f2;
     --button-color: #5c48ee;
-    
+
 }
 
 /* contains styling for the navbar*/
@@ -12,7 +12,7 @@
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
-    
+
 }
 
 
@@ -23,7 +23,7 @@ nav {
     color: white;
     display: flex; /* Use flexbox */
     justify-content: space-between; /* Distribute items with space between */
-   
+
 }
 
 nav .navbar-brand{
@@ -97,5 +97,3 @@ button {
 button:hover {
     background-color: #485BEE;
 }
-
-

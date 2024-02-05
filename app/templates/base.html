@@ -10,7 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../static/styles/base.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/summary.css">
     <link rel="stylesheet" type="text/css" href="../static/styles/income.css">
-    
+
     <title>Your Web Page</title>
 </head>
 <body>
@@ -22,14 +22,14 @@
         <p>Current User: {{ current_user.username }}</p>
         <p>Current Profile: {{ data['profile'] }}</p>
     </div>
-    
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <div class="navbar-nav">
             <a class="nav-item nav-link" href="{{ url_for('home') }}">Home</a>
-          
+
             <a class="nav-item nav-link" href="{{ url_for('income') }}">Income</a>
             <a class="nav-item nav-link" href="{{ url_for('expense') }}">Expense</a>
             <a class="nav-item nav-link" href="#Transfers">Transfers</a>

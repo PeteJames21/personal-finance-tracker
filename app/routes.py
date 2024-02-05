@@ -195,4 +195,3 @@ def add_profile():
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_profile.html', form=form)
-    
