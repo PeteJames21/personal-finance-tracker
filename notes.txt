@@ -1,15 +1,10 @@
-db.add_profile('nelly', 'Personal')
->>> db.add_account('nelly', 'Personal', 'Mpesa', 1000, 'Balance at 31 Jan')
->>> db.save()
->>> db.add_transaction('nelly', 'Personal', 'income', account_debited='Mpesa')
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "D:/alx_repo/personal-finance-manager/app/models/engine/db_engine.py", line 107, in add_transaction        
-ount=250)
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "D:/alx_repo/personal-finance-manager/app/models/engine/db_engine.py", line 149, in add_transaction        
-    raise ValueError(f"The category '{category}' does not exist")
-ValueError: The category 'income' does not exist
->>> db.add_transaction('nelly', 'Personal', 'incomes', account_debited='Mpesa', amount=250)
->>> db.save()
+<div class="switch-profiles">
+            <div class="switch-label"><label for="profileSwitch">Switch Profiles:</label></div>
+            <div class="switch-select">
+                <select id="profileSwitch" onchange="switchProfile(this)">
+                    {% for profile in profiles %}
+                        <option value="{{ profile }}">{{ profile }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>

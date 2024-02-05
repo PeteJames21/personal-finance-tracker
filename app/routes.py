@@ -1,7 +1,7 @@
 """Handles the urls that the module supports"""
 from app import app, db
 from flask import render_template, flash, redirect, url_for, request
-from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountForm
+from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountForm, AddProfileForm
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -174,3 +174,25 @@ def add_account():
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form)
+
+#Route for adding a profile
+@app.route('/add_profile', methods=['GET', 'POST'])
+@login_required
+def add_profile():
+    username = current_user.username
+    form = AddProfileForm()
+    if form.validate_on_submit():
+        username = username
+        profile = form.profile.data
+        description = form.description.data
+        set_as_default = form.set_as_default.data
+        try:
+            db.add_profile(username, profile, description, set_as_default)
+            db.save()
+            flash('Profile added successfully', 'success')
+            return redirect(url_for('home'))
+        except ValueError as e:
+            error_message = str(e)
+            flash(error_message, 'error')
+    return render_template('add_profile.html', form=form)
+    

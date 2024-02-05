@@ -15,7 +15,7 @@
 }
 
 .profile-bar, .totals{
-    width: var(--page_width);
+    /* width: var(--page_width); */
     margin: 0px auto;
 }
 
@@ -49,9 +49,37 @@
 .head-bar h3 {
     margin: 0;
 }
+/* STYLING ADD A PROFILE button */
+.profile-bar .add-profile .button{
+    background-color: #79bbe7;
+    font-size: larger;
+}
 
-
-
+#add-profile, #switch-prof{
+    display: inline-block;
+    padding: 5px;
+    font-size: 16px;
+  
+    text-align: center;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+    background-color: #1275c1; 
+    color: #fff; 
+    border: 2px solid #b3d9f7;
+    text-wrap: nowrap;
+}
+#add-profile:hover,  #switch-prof:hover{
+    background-color: #4a90e2; 
+    color: #fff; 
+    border-color: #4a90e2; 
+  }
+.profile-bar .switch-profiles{
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+ 
+}
 /* Style for the user profile and add transaction */
 .profile {
     display: flex;

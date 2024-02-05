@@ -39,3 +39,9 @@ class AddAccountForm(FlaskForm):
     balance = FloatField('Balance', validators=[DataRequired()])
     description = StringField('Description')
     submit = SubmitField('Add Account')
+
+class AddProfileForm(FlaskForm):
+    profile = StringField('Profile Name', validators=[DataRequired()])
+    description = StringField('Description')
+    submit = SubmitField('Add Profile')
+    set_as_default = BooleanField('Set as Default Profile?', default=False)

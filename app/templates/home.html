@@ -5,18 +5,18 @@
 <section class="profile-bar">
     <div class="head-bar">
         <div class="current_user">
-            <div class="current_user">Current User: {{ current_user.username }}</div>
-            <div class="current-profile">Current Profile: {{ data[profile] }}</div>
+            <div class="current_user">From:  {{ data['start_date'] }}</div>
+            <div class="current-profile">To: {{ data['end_date'] }}</div>
         </div>
 
         <div class="header-summary"><h3>Account Summary</h3></div>
-        <div class="add-transaction" id="add-p">
-            <a href="#"><button> Add a Profile</button></a>
+        <div class="add-profile" >
+            <a href="{{ url_for('add_profile') }}"><button id="add-profile"> Add a Profile</button></a>
         </div>
         <div class="switch-profiles">
             <label class=".switch-label" for="profileSwitch">Switch Profile:</label>
             <div class="dropdown">
-                <button onclick="toggleDropdown()" class="dropbtn">Select Profile</button>
+                <button id="switch-prof" onclick="toggleDropdown()" class="dropbtn">Select Profile</button>
                 <div id="profileDropdown" class="dropdown-content">
                     <!-- JavaScript will populate options here -->
                 </div>
@@ -25,7 +25,7 @@
     </div>
   <!--   <h5>{{ data['start_date'] }}</h5>
     <h5>{{ data['end_date'] }}</h5> -->
-    {{ data['profile'] }} <!-- will display the profile that was selected -->
+<!--     {{ data }} --> <!-- will display the profile that was selected -->
 
 
     <div class="profile">

@@ -18,7 +18,7 @@
 
 /* Basic styling for the navbar */
 nav {
-    background-color: var(--main-blue);;
+    background-color: var(--main-blue);
     overflow: hidden;
     color: white;
     display: flex; /* Use flexbox */
@@ -26,19 +26,21 @@ nav {
    
 }
 
-.logo{
-
-    width: 30%;
+nav .navbar-brand{
+    min-width: 40%;
+/*     background-color: #f00c1b; */
+    text-align: center;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+    font-size:medium; /* In media queries, if width reduces change flex direction to column */
+}
+nav .navbar-brand p{
+    margin: 0 auto;
+}
 
-}
-/* Style for the logo */
-.logo a {
-    text-decoration: none;
-    color: white;
-}
+
+
 
 /* Style for the other items on the right */
 .nav-items {
@@ -96,6 +98,4 @@ button:hover {
     background-color: #485BEE;
 }
 
-#hey{
-    background-color: #5c48ee;
-}
+
