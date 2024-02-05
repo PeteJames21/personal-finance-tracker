@@ -78,8 +78,45 @@
     display: flex;
     align-items: center;
     margin: 0 auto;
- 
 }
+
+/* styling for switch profiles */
+.dropbtn {
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Style for the dropdown container */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #d5f0fe;
+    min-width: 100px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+/* Style for each item inside the dropdown */
+.dropdown-content a {
+    display: block;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: #333; /* Text color */
+}
+
+/* Hover effect for dropdown items */
+.dropdown-content a:hover {
+    background-color: #ddd; /* Hover background color */
+}
+
+
+
+
+
 /* Style for the user profile and add transaction */
 .profile {
     display: flex;
