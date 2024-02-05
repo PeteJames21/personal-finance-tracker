@@ -23,7 +23,8 @@ def home():
     db.reload()
     all_profiles = db.get_profiles(current_user.username)
     data = get_request_args(request)
-    stats = get_summary_stats(current_user.username, data['profile'])
+    stats = get_summary_stats(current_user.username, data['profile'],
+                              from_=data['start_date'], to=data['end_date'])
     data.update(stats)
     return render_template('home.html', title='Home',
                            user=current_user,
