@@ -1,7 +1,7 @@
 import datetime
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField, SelectField, DateField
-from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError
+from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, InputRequired
 
 
 class LoginForm(FlaskForm):
@@ -19,7 +19,7 @@ class RegistrationForm(FlaskForm):
     email = StringField('Email',
                            validators=[DataRequired(), Email()])
     password = PasswordField('Password', validators=[DataRequired()])
-   
+
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
@@ -36,7 +36,7 @@ class TransactionForm(FlaskForm):
 
 class AddAccountForm(FlaskForm):
     account = StringField('Account Name', validators=[DataRequired()])
-    balance = FloatField('Balance', validators=[DataRequired()])
+    balance = FloatField('Balance', validators=[InputRequired()])
     description = StringField('Description')
     submit = SubmitField('Add Account')
 
