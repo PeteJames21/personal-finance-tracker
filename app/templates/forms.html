@@ -7,6 +7,15 @@
     <title>Add Transaction Form</title>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        /* Custom CSS for form field width */
+        .form-control {
+            width: 60%;
+        }
+        .container{
+            margin: 0 auto;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-4">
@@ -22,7 +31,7 @@
                 </div>
             {% endif %}
         {% endwith %}
-    
+
     {% block content %}{% endblock %}
 
 

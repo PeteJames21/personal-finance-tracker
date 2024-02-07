@@ -1,41 +1,46 @@
 {% extends "forms.html" %}
+
 {% block content %}
 <div class="container mt-4">
-    <form method="POST" action="{{ url_for('add_transaction') }}" class="needs-validation" novalidate>
-        {{ form.csrf_token }}
-     
-        <div class="form-group">
-            {{ form.category.label }}
-            {{ form.category(class="form-control", required="required") }}
+    <div class="row justify-content-center"> <!-- Center the content -->
+        <div class="col-md-10"> <!-- Adjusted column width to center the content and limit its width -->
+            <form method="POST" action="{{ url_for('add_transaction') }}" class="needs-validation" novalidate>
+                {{ form.csrf_token }}
+
+                <div class="form-group">
+                    {{ form.category.label }}
+                    {{ form.category(class="form-control", required="required", placeholder="Income, Expense or Transfer") }}
+                </div>
+                <div class="form-group">
+                    {{ form.amount.label }}
+                    {{ form.amount(class="form-control", required="required", placeholder="Enter amount") }}
+                </div>
+                <div class="form-group" id="account_debited_field">
+                    {{ form.account_debited.label }}
+                    {{ form.account_debited(class="form-control", placeholder="e.g. Mpesa, Cash, Equity Bank e.t.c") }}
+                </div>
+                <div class="form-group" id="account_credited_field">
+                    {{ form.account_credited.label }}
+                    {{ form.account_credited(class="form-control", placeholder="e.g. Mpesa, Cash, Equity Bank e.t.c") }}
+                </div>
+                <div class="form-group" id="subcategory">
+                    {{ form.subcategory.label }}
+                    {{ form.subcategory(class="form-control", placeholder="Reason for the transaction e.g. Salary, Rent") }}
+                </div>
+                <div class="form-group" id="description">
+                    {{ form.description.label }}
+                    {{ form.description(class="form-control", placeholder="Add an optional description") }}
+                </div>
+                <div class="form-group">
+                    {{ form.date.label }}
+                    {{ form.date(class="form-control", required="required") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            {{ form.amount.label }}
-            {{ form.amount(class="form-control", required="required") }}
-        </div>
-        <div class="form-group" id="account_debited_field">
-            {{ form.account_debited.label }}
-            {{ form.account_debited(class="form-control") }}
-        </div>
-        <div class="form-group" id="account_credited_field">
-            {{ form.account_credited.label }}
-            {{ form.account_credited(class="form-control") }}
-        </div>
-        <div class="form-group" id="subcategory">
-            {{ form.subcategory.label }}
-            {{ form.subcategory(class="form-control") }}
-        </div>
-        <div class="form-group" id="description">
-            {{ form.description.label }}
-            {{ form.description(class="form-control") }}
-        </div>
-        <div class="form-group">
-            {{ form.date.label }}
-            {{ form.date(class="form-control", required="required") }}
-        </div> 
-        <div class="form-group">
-            {{ form.submit(class="btn btn-primary") }}
-        </div>
-    </form>
+    </div>
 </div>
 
 <!-- jQuery and Bootstrap JS -->
@@ -57,7 +62,7 @@
                 $("#account_debited_field").show();
                 $("#account_credited_field").show();
                 $("#subcategory").hide();
-                
+
             }
         }
 

@@ -2,71 +2,84 @@
 
 {% block content %}
 
-<section class="incomes">
-    <h3>Expense</h3>
-    <div class="income-summary">
-        <div class="total-income">
-            <div class="current-month"><p>Month: </p></div>
-            <div class="monthly-income"><p>Total Monthly Expense</p></div>
+<section class="profile-bar">
+    <div class="head-bar">
+        <div class="current_user">
+            <div class="current_user">From:  {{ data['start_date'] }}</div>
+            <div class="current-profile">To: {{ data['end_date'] }}</div>
+        </div>
+
+        <div class="header-summary"><h3>Expense Overview</h3></div>
+        <div class="add-profile" >
+            <a href="{{ url_for('add_profile') }}"><button id="add-profile"> Add a Profile</button></a>
+        </div>
+        <div class="switch-profiles">
+            <label class=".switch-label" for="profileSwitch">Switch Profile:</label>
+            <div class="dropdown">
+                <button id="switch-prof" onclick="toggleDropdown()" class="dropbtn">Select Profile</button>
+                <div id="profileDropdown" class="dropdown-content">
+                    <!-- JavaScript will populate options here -->
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--   <h5>{{ data['start_date'] }}</h5>
+    <h5>{{ data['end_date'] }}</h5> -->
+<!--     {{ data }} --> <!-- will display the profile that was selected -->
+
+
+    <div class="profile">
+        <div class="date-filter">
+            <button id="toggleDateFilter">Filter Summary by Date</button>
+            <div class="date-options">
+                <form action="#" method="get" id="dateFilterForm" >
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+
+                    <button type="submit">Apply Filter</button>
+                </form>
+            </div>
         </div>
         <div class="add-transaction">
-            <button> Add/Remove a Category</button>
+            <a href="{{ url_for('add_transaction') }}"><button> Add a Transaction</button></a>
+        </div>
+        <div class="add-transaction">
+            <a href="{{ url_for('add_account') }}"><button> Add Account</button></a>
         </div>
     </div>
 </section>
-<h3 class="temp">Add Expense</h3>
-<section class="add-income">
-     <div class="income-details">
-        <div class="date">
-            <label for="dateInput">Date:</label>
-            <input type="date" id="dateInput" name="date" value="{{ today }}" />
-        </div>       
-        <div class="input-amount">
-            <label for="amountInput">Amount:</label>
-            <input type="text" id="amountInput" name="amount" placeholder="Enter amount" />
-        </div>       
-        <div class="input-category">
-            <label for="categoryDropdown">Category:</label>
-            <select id="categoryDropdown" name="category">
-                <option value="salary">Rent</option>
-                <option value="bonus">Food</option>
-                <option value="dividends">Clothes</option>
-            </select>
+
+<section class="totals">
+    <div class="total-expense">
+        <div class="total-label">
+            <h4>Total Expense</h4>
         </div>
-        <div class="input-category">
-            <label for="textInput">Description:</label>
-            <input type="text" id="textInput" name="textInput" placeholder="Type here...">
+        <div class="total-amount">
+            {% if data %}
+                <h4>{{ data['total_expense'] }}</h4>
+            {% endif %}
         </div>
-    </div>
-</section>
-<h3 class="temp">Expense Overview</h3>
-<section class="income-overview">
-    <div class="income-list">
-        <div class="all-income">
-            <h4>All Expense Logged</h4>
+        <div class="top-items">
+            <h5>
+                Top Categories
+            </h5>
         </div>
-        <div class="listed-income">
+        <div class="listed_items">
             <ol>
-                <li>Rent</li>
-                <li>Student Loan</li>
-                <li>Food</li>
-                <li>Vacation</li>
+                {% if data %}
+                <ol>
+                    {% for item in data['top_expenses'] %}
+                        <li>{{ item[0] }}: {{ item[1] }}</li>
+                    {% endfor %}
+                </ol>
+            {% endif %}
             </ol>
         </div>
     </div>
-    <div class="income-categories">
-        <div class="label-income">
-            <h4>Top Categories</h4>
-        </div>
-        <div class="listed-income">
-            <ol>
-                <li>Rent</li>
-                <li>Student Loan</li>
-                <li>Food</li>
-                <li>Vacation</li>
-            </ol>
-        </div>
-    </div>
+
 </section>
 
 {% endblock %}

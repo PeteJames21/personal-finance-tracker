@@ -26,11 +26,11 @@ class RegistrationForm(FlaskForm):
 
 class TransactionForm(FlaskForm):
     date = DateField('Date', default=datetime.date.today, validators=[DataRequired()])
-    category = SelectField('Type of Transaction', choices=[('incomes', 'Income'), ('expenses', 'Expense'), ('transfers', 'Transfer')], validators=[DataRequired()])
-    amount = FloatField('Amount', validators=[DataRequired()])
+    category = SelectField('Type of Transaction', choices=[('', 'Income, Expense or Transfer'), ('incomes', 'Income'), ('expenses', 'Expense'), ('transfers', 'Transfer')], validators=[DataRequired()])
+    amount = FloatField('Amount', validators=[InputRequired()])
     account_debited = StringField('Account Debited')
     account_credited = StringField('Account Credited')
-    subcategory = StringField('Subcategory')
+    subcategory = StringField('Source/Destination of the money')
     description = StringField('Description')
     submit = SubmitField('Add Transaction')
 

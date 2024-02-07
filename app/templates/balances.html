@@ -1,26 +1,63 @@
-{% extends "/auth/base.html" %}
+{% extends "base.html" %}
 
 {% block content %}
-  <h2>{{ title }}</h2>
-  <h3>{{ user['username'] }}'s {{ user['account'] }} Account</h3>
 
-  <h4>Income</h4>
-  <ul>
-    {% for category, value in user['account_categories']['income'].items() %}
-      <li>{{ category }}: ${{ value }}</li>
-    {% endfor %}
-  </ul>
+<section class="profile-bar">
+    <div class="head-bar">
+        <div class="current_user">
+            <div class="current_user">From:  {{ data['start_date'] }}</div>
+            <div class="current-profile">To: {{ data['end_date'] }}</div>
+        </div>
 
-  <h4>Expenses</h4>
-  <ul>
-    {% for category, value in user['account_categories']['expense'].items() %}
-      <li>{{ category }}: ${{ value }}</li>
-    {% endfor %}
-  </ul>
+        <div class="header-summary"><h3>Balances</h3></div>
+        <div class="add-profile" >
+            <a href="{{ url_for('add_profile') }}"><button id="add-profile"> Add a Profile</button></a>
+        </div>
+        <div class="switch-profiles">
+            <label class=".switch-label" for="profileSwitch">Switch Profile:</label>
+            <div class="dropdown">
+                <button id="switch-prof" onclick="toggleDropdown()" class="dropbtn">Select Profile</button>
+                <div id="profileDropdown" class="dropdown-content">
+                    <!-- JavaScript will populate options here -->
+                </div>
+            </div>
+        </div>
+    </div>
+  <!--   <h5>{{ data['start_date'] }}</h5>
+    <h5>{{ data['end_date'] }}</h5> -->
+<!--     {{ data }} --> <!-- will display the profile that was selected -->
 
-  <hr>
 
-  <h4>Total Income: ${{ total_income }}</h4>
-  <h4>Total Expenses: ${{ total_expenses }}</h4>
-  <h4>Balance: ${{ balance }}</h4>
+    <div class="profile">
+        <div class="date-filter">
+            <button id="toggleDateFilter">Filter Summary by Date</button>
+            <div class="date-options">
+                <form action="#" method="get" id="dateFilterForm" >
+                    <label for="startDate">Start Date:</label>
+                    <input type="date" id="startDate" name="startDate" required>
+
+                    <label for="endDate">End Date:</label>
+                    <input type="date" id="endDate" name="endDate" required>
+
+                    <button type="submit">Apply Filter</button>
+                </form>
+            </div>
+        </div>
+        <div class="add-transaction">
+            <a href="{{ url_for('add_transaction') }}"><button> Add a Transaction</button></a>
+        </div>
+        <div class="add-transaction">
+            <a href="{{ url_for('add_account') }}"><button> Add Account</button></a>
+        </div>
+    </div>
+</section>
+<section>
+
+
+
+                           {{ profile_stats }}
+
+</section>
+
+
 {% endblock %}

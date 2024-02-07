@@ -63,28 +63,21 @@ def register():
 
 @app.route('/balances')
 def balances():
-    user = {
-        'username': 'Pete',
-        'account': 'Personal',
-        'account_categories': {
-            'income': {'salary': 5000, 'bonus': 1000},
-            'expense': {'rent': 1200, 'utilities': 200, 'food': 400}
-        }
-    }
+    db.reload()
+    all_profiles = db.get_profiles(current_user.username)
+    data = get_request_args(request)
+    stats = get_summary_stats(current_user.username, data['profile'],
+                              from_=data['start_date'], to=data['end_date'])
+    data.update(stats)
+    username = current_user.username
+    user_profile = get_current_profile()
+    profile_stats = get_summary_stats(username, user_profile)
+    return render_template('balances.html', title='Income',
+                           user=current_user,
+                           profiles=all_profiles,  # Needed by JS.
+                           data=data, profile_stats=profile_stats)
 
-    # Calculate sums
-    total_income = sum(user['account_categories']['income'].values())
-    total_expenses = sum(user['account_categories']['expense'].values())
-    balance = total_income - total_expenses
 
-    return render_template(
-        'balances.html',
-        title='Balances',
-        user=user,
-        total_income=total_income,
-        total_expenses=total_expenses,
-        balance=balance
-    )
 
 
 @app.route('/account', methods=['POST', 'GET'])
@@ -95,14 +88,33 @@ def account():
 
 @app.route('/income', methods=['POST', 'GET'])
 def income():
-    """Serves page with summary"""
-    return render_template('income.html')
+    """Serves incomes page"""
+    db.reload()
+    all_profiles = db.get_profiles(current_user.username)
+    data = get_request_args(request)
+    stats = get_summary_stats(current_user.username, data['profile'],
+                              from_=data['start_date'], to=data['end_date'])
+    data.update(stats)
+    return render_template('income.html', title='Income',
+                           user=current_user,
+                           profiles=all_profiles,  # Needed by JS.
+                           data=data)
 
 
 @app.route('/expense', methods=['POST', 'GET'])
 def expense():
-    """Serves page with summary"""
-    return render_template('expense.html')
+    """Serves expenses page"""
+    db.reload()
+    all_profiles = db.get_profiles(current_user.username)
+    data = get_request_args(request)
+    stats = get_summary_stats(current_user.username, data['profile'],
+                              from_=data['start_date'], to=data['end_date'])
+    data.update(stats)
+    return render_template('expense.html', title='Expense',
+                           user=current_user,
+                           profiles=all_profiles,  # Needed by JS.
+                           data=data)
+
 
 
 @app.route('/logout')
@@ -116,6 +128,11 @@ def logout():
 @login_required
 def add_transaction():
     username = current_user.username
+    user_profile = get_current_profile()
+    if not db.get_accounts(username, user_profile):
+        flash(f'You need to create at least one account in the {user_profile} profile', 'alert')
+        return redirect(url_for('add_account'))
+
     form = TransactionForm()
     if form.validate_on_submit():
         username = current_user.username
