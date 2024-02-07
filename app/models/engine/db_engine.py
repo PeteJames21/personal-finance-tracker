@@ -198,18 +198,38 @@ class DBEngine:
         with open(self.__file, 'w', encoding='utf-8') as f:
             json.dump(self.db, f, indent=4)
 
-    def get_accounts(self, username, profile) -> list[str]:
+    def get_account_names(self, username, profile) -> list[str]:
         """Get a list of account names under the given profile."""
-        return list(self.db[username]['profiles'][profile]['accounts'])
+        return list(self.db[username]['profiles'][profile]['accounts'].keys())
+
+    def get_all_account_balances(self, username, profile) -> dict:
+        """
+        Get the balances of all accounts.
+
+        Returns a dict in which the keys are account names and the values are
+        the corresponding account balances.
+        """
+        balances = {}
+        accounts = self.db[username]['profiles'][profile]['accounts']
+        for account in accounts:
+            balances[account] = accounts[account]['balance']
+
+        return balances
+
+    def get_account_balance(self, username, profile, account) -> int:
+        """Get the balance of the specified account."""
+        return self.db[username]['profiles'][profile]['accounts'][account]['balance']
 
     def get_profiles(self, username) -> list[str]:
         """Get a list of profiles registered under the given user."""
         return list(self.db[username]['profiles'].keys())
 
-    def get_total_balance(self, username):
-        """Return sum of balances from all accounts."""
-        # todo: implement
-        raise NotImplementedError
+    def get_total_balance(self, username, profile):
+        """Return sum of balances from all accounts in the given profile."""
+        balances = self.get_all_account_balances(username, profile)
+        if not balances:
+            return 0
+        return sum(balances.values())
 
     def get_user_by_username(self, username):
         """
