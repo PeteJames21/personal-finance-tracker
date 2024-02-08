@@ -119,4 +119,13 @@
     </div>
 </section>
 
+<section class="charts-group">
+    <h4>Charts</h4>
+    <img src="data:image/svg+xml;base64,{{ data['graph_pie_incomes'] }}">
+    <img src="data:image/svg+xml;base64,{{ data['graph_pie_expenses'] }}">
+    <img src="data:image/svg+xml;base64,{{ data['graph_line_monthly_cash_flows'] }}">
+    <img src="data:image/svg+xml;base64,{{ data['graph_line_monthly_net_income'] }}">
+
+</section>
+
 {% endblock %}
