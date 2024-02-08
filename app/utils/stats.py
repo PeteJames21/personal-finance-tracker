@@ -90,6 +90,8 @@ def pie_chart(x: list[int | float], labels: list[str], title: str = '') -> str:
     :param title: title to use for the chart
     :return: a base64-encoded pie chart of the data
     """
+    if not x:
+        return ''
     assert len(x) == len(labels), "'x' and 'labels' must have equal length"
     fig, ax = plt.subplots()
     ax.pie(x, labels=labels, autopct='%1.1f%%', startangle=90)
@@ -195,6 +197,9 @@ def monthly_cash_flows(incomes: pd.Series, expenses: pd.Series,
     :param title: the title to give to the graph
     :return: :return: a base64-encoded line chart of the data
     """
+    if incomes.shape[0] < 2 or expenses.shape[0] < 2:
+        # Do not plot if either Series does not have enough data.
+        return ''
     fig, ax = plt.subplots()
     ax.plot(incomes, label='Total Monthly Income')
     ax.plot(expenses, label='Total Monthly Expenses')
@@ -211,6 +216,11 @@ def line_plot(data: pd.Series, title: str = '') -> str:
     """
     TODO: make doc
     """
+    if data.empty or data is None:
+        return ''
+    # Cannot draw line graph with only one point
+    if data.shape[0] < 2:
+        return ''
     fig, ax = plt.subplots()
 
     ax.plot(data)
@@ -229,6 +239,8 @@ def bar_plot(x: list[int | float], labels: list[str], title: str = '') -> str:
     :param title: title to use for the chart
     :return: a base64-encoded bar chart of the data
     """
+    if not x or len(x) < 2:
+        return ''
     fig, ax = plt.subplots()
     ax.set_xlabel('Amount')
     ax.set_title(title)
@@ -237,6 +249,8 @@ def bar_plot(x: list[int | float], labels: list[str], title: str = '') -> str:
 
 
 def pie_chart2(x, labels, title='') -> str:
+    if not x or len(x) < 2:
+        return ''
     # Sample data
     fig, ax = plt.subplots(figsize=(8, 8))
     ax.pie(x, labels=labels, autopct='%1.1f%%', startangle=90)
