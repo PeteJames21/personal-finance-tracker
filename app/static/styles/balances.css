@@ -1,0 +1,20 @@
+.account-totals {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Three columns with equal width */
+    grid-gap: 10px; /* Gap between grid items */
+    margin-top: 5px;
+    background-color: #f7f5f5; /* Background color for the entire section */
+    padding: 5px;
+    box-sizing: border-box;
+    align-items: start;
+}
+
+.account-balance {
+    padding: 0px;
+    text-align: center;
+    background-color: #ffe4c4;
+    display: flex;
+    align-items: center; /* Corrected from 'totalcenter' to 'center' */
+    justify-content: center;
+    height: 60px;
+}

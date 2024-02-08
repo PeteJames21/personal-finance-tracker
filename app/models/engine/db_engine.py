@@ -198,7 +198,7 @@ class DBEngine:
         with open(self.__file, 'w', encoding='utf-8') as f:
             json.dump(self.db, f, indent=4)
 
-    def get_account_names(self, username, profile) -> list[str]:
+    def get_accounts(self, username, profile) -> list[str]:
         """Get a list of account names under the given profile."""
         return list(self.db[username]['profiles'][profile]['accounts'].keys())
 

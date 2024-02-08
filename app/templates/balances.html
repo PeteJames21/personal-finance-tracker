@@ -51,13 +51,13 @@
         </div>
     </div>
 </section>
-<section>
-
-
-
-                           {{ profile_stats }}
-
-</section>
-
+<section class="account-totals">
+    {% for item in data['balances']|dictsort %}
+        <div class="account-balance">
+            {{ item[0] }}
+            <br>
+            {{ item[1] }}
+        </div>
+    {% endfor %}
 
 {% endblock %}

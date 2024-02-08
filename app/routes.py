@@ -86,21 +86,15 @@ def register():
 
 
 @app.route('/balances')
+@login_required
 def balances():
-    db.reload()
-    all_profiles = db.get_profiles(current_user.username)
     data = get_request_args(request)
-    stats = get_summary_stats(current_user.username, data['profile'],
-                              from_=data['start_date'], to=data['end_date'])
-    data.update(stats)
-    username = current_user.username
-    user_profile = get_current_profile()
-    profile_stats = get_summary_stats(username, user_profile)
-    return render_template('balances.html', title='Balances',
-                           user=current_user,
-                           profiles=all_profiles,  # Needed by JS.
-                           data=data, profile_stats=profile_stats)
-
+    profiles = db.get_profiles(current_user.username)  # Needed by JS
+    profile = data['profile']
+    balances = db.get_all_account_balances(current_user.username, profile)
+    data['balances'] = balances
+    return render_template('balances.html',
+                           data=data, profiles=profiles)
 
 
 

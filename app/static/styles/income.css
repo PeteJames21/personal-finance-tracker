@@ -34,7 +34,7 @@
     padding: 0px;
     text-align: center;
     display: flex;
-    align-items: center;
+    align-items: totalcenter;
     justify-content: space-between;
     height: var(--profile_height);
 
