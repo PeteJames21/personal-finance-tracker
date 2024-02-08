@@ -1,10 +1,5 @@
-<div class="switch-profiles">
-            <div class="switch-label"><label for="profileSwitch">Switch Profiles:</label></div>
-            <div class="switch-select">
-                <select id="profileSwitch" onchange="switchProfile(this)">
-                    {% for profile in profiles %}
-                        <option value="{{ profile }}">{{ profile }}</option>
-                    {% endfor %}
-                </select>
-            </div>
-        </div>
+white(ish) - primary-white f4f4f6 / e9f4ff
+blue - primary-blue(light) b2d3e6
+blue - secondary-blue(dark) #0047AB
+orange - secondary orange (bright) fd830d
+tertiary - tertiary orange (dark())

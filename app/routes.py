@@ -7,6 +7,7 @@ from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
 from .utils.stats import get_summary_stats
 from .utils.flask_utils import get_current_profile, get_request_args
+from .models.engine.db_engine import IntegrityError
 
 
 @app.route('/')
@@ -72,7 +73,7 @@ def balances():
     username = current_user.username
     user_profile = get_current_profile()
     profile_stats = get_summary_stats(username, user_profile)
-    return render_template('balances.html', title='Income',
+    return render_template('balances.html', title='Balances',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.
                            data=data, profile_stats=profile_stats)
@@ -95,7 +96,7 @@ def income():
     stats = get_summary_stats(current_user.username, data['profile'],
                               from_=data['start_date'], to=data['end_date'])
     data.update(stats)
-    return render_template('income.html', title='Income',
+    return render_template('income.html', title='Incomes',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.
                            data=data)
@@ -110,7 +111,7 @@ def expense():
     stats = get_summary_stats(current_user.username, data['profile'],
                               from_=data['start_date'], to=data['end_date'])
     data.update(stats)
-    return render_template('expense.html', title='Expense',
+    return render_template('expense.html', title='Expenses',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.
                            data=data)
@@ -129,11 +130,15 @@ def logout():
 def add_transaction():
     username = current_user.username
     user_profile = get_current_profile()
-    if not db.get_accounts(username, user_profile):
+    user_accounts = db.get_accounts(username, user_profile)
+
+    if not user_accounts:
         flash(f'You need to create at least one account in the {user_profile} profile', 'alert')
         return redirect(url_for('add_account'))
 
-    form = TransactionForm()
+    form = TransactionForm(user_accounts=user_accounts)
+
+
     if form.validate_on_submit():
         username = current_user.username
         profile = get_current_profile()
@@ -164,8 +169,13 @@ def add_transaction():
         except ValueError as e:
             error_message = str(e)
             flash(error_message, 'error')
-
-    return render_template('add_transaction.html', form=form)
+        except KeyError as e:
+            error_message = f"An error occurred: {str(e)} is an invalid key"
+            flash(error_message, 'error')
+        except IntegrityError as e:
+            error_message = str(e)
+            flash(error_message, 'error')
+    return render_template('add_transaction.html', form=form, title="Add Transaction", acc=user_accounts)
 
 
 # Route for adding a an account
@@ -190,7 +200,7 @@ def add_account():
         except ValueError as e:
             error_message = str(e)
             flash(error_message, 'error')
-    return render_template('add_account.html', form=form)
+    return render_template('add_account.html', form=form, title="Add Acount")
 
 #Route for adding a profile
 @app.route('/add_profile', methods=['GET', 'POST'])
@@ -211,4 +221,4 @@ def add_profile():
         except ValueError as e:
             error_message = str(e)
             flash(error_message, 'error')
-    return render_template('add_profile.html', form=form)
+    return render_template('add_profile.html', form=form, title="Add Acount")

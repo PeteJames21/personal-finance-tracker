@@ -152,9 +152,9 @@ class DBEngine:
             account_credited = self.db[username]['profiles'][profile]['accounts'][account_credited]
 
         if category == 'incomes':
-            if account_credited:
+            """ if account_credited:
                 raise IntegrityError("The transaction field 'account_credited'"
-                                     " is not valid for expense-related transactions")
+                                     " is not valid for expense-related transactions") """
             if not account_debited:
                 raise IntegrityError("The transaction field 'account_debited' must"
                                      " be specified for income transactions")
@@ -163,9 +163,9 @@ class DBEngine:
             account_debited['transactions']['incomes'].append(trans_details)
 
         elif category == 'expenses':
-            if account_debited:
+            """ if account_debited:
                 raise IntegrityError("The transaction field 'account_debited'"
-                                     " is not valid for income transactions")
+                                     " is not valid for income transactions") """
             # Credit the account and add the transaction record
             # Abort the transaction if it would cause a negative balance
             if account_credited['balance'] - amount < 0:

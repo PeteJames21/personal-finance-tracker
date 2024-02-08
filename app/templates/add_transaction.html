@@ -2,34 +2,53 @@
 
 {% block content %}
 <div class="container mt-4">
-    <div class="row justify-content-center"> <!-- Center the content -->
-        <div class="col-md-10"> <!-- Adjusted column width to center the content and limit its width -->
+    <div class="row justify-content-center">
+        <div class="col-md-10">
             <form method="POST" action="{{ url_for('add_transaction') }}" class="needs-validation" novalidate>
                 {{ form.csrf_token }}
 
                 <div class="form-group">
                     {{ form.category.label }}
-                    {{ form.category(class="form-control", required="required", placeholder="Income, Expense or Transfer") }}
+                    {{ form.category(class="form-control", required="required", placeholder="Income, Expense or Transfer", id="category") }}
+                    {% for error in form.category.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
+                {{ acc }}
                 <div class="form-group">
                     {{ form.amount.label }}
                     {{ form.amount(class="form-control", required="required", placeholder="Enter amount") }}
+                    {% for error in form.amount.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
                 <div class="form-group" id="account_debited_field">
                     {{ form.account_debited.label }}
                     {{ form.account_debited(class="form-control", placeholder="e.g. Mpesa, Cash, Equity Bank e.t.c") }}
+                    {% for error in form.account_debited.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
-                <div class="form-group" id="account_credited_field">
+                <div class="form-group" id="account_credited_field" style="display: none;">
                     {{ form.account_credited.label }}
                     {{ form.account_credited(class="form-control", placeholder="e.g. Mpesa, Cash, Equity Bank e.t.c") }}
+                    {% for error in form.account_credited.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
                 <div class="form-group" id="subcategory">
                     {{ form.subcategory.label }}
                     {{ form.subcategory(class="form-control", placeholder="Reason for the transaction e.g. Salary, Rent") }}
+                    {% for error in form.subcategory.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
                 <div class="form-group" id="description">
                     {{ form.description.label }}
                     {{ form.description(class="form-control", placeholder="Add an optional description") }}
+                    {% for error in form.description.errors %}
+                        <small class="text-danger">{{ error }}</small>
+                    {% endfor %}
                 </div>
                 <div class="form-group">
                     {{ form.date.label }}
@@ -39,11 +58,15 @@
                     {{ form.submit(class="btn btn-primary") }}
                 </div>
             </form>
+
         </div>
     </div>
 </div>
 
+
 <!-- jQuery and Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <script>
