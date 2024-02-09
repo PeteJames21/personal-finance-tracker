@@ -5,7 +5,7 @@ from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountFo
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from .utils.stats import get_summary_stats, get_summary_graphs, pie_chart, pie_chart2
+from .utils.stats import get_summary_stats, get_summary_graphs, pie_chart, donut_chart
 from .utils.flask_utils import get_current_profile, get_request_args
 from .models.engine.db_engine import IntegrityError
 
@@ -37,12 +37,12 @@ def home():
     )
     # Generate pie charts for total incomes and expenses
     # TODO: move this logic to utils/stats.py
-    graph_pie_incomes = pie_chart2(
+    graph_pie_incomes = donut_chart(
         x=[i[1] for i in data['top_incomes']],
         labels=[i[0] for i in data['top_incomes']],
         title='Top Income Sources'
     )
-    graph_pie_expenses = pie_chart2(
+    graph_pie_expenses = donut_chart(
         x=[i[1] for i in data['top_expenses']],
         labels=[i[0] for i in data['top_expenses']],
         title='Top Expenses'

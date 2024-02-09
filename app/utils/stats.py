@@ -248,7 +248,7 @@ def bar_plot(x: list[int | float], labels: list[str], title: str = '') -> str:
     return fig_to_base64(fig)
 
 
-def pie_chart2(x, labels, title='') -> str:
+def donut_chart(x, labels, title='') -> str:
     if not x or len(x) < 2:
         return ''
     # Sample data
