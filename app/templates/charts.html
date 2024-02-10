@@ -8,12 +8,14 @@
 {% else %}
     <section class="charts-group">
         {% for chart in data['charts'].keys() %}
-            <div class="chart-container">
-                <span class="chart-title">{{ data['charts'][chart][0] }}</span>
-                <div class="chart-area">
-                    <img src="data:image/svg+xml;base64,{{ data['charts'][chart][1] }}">
+            {% if data['charts'][chart][1] %}
+                <div class="chart-container">
+                    <span class="chart-title">{{ data['charts'][chart][0] }}</span>
+                    <div class="chart-area">
+                        <img src="data:image/svg+xml;base64,{{ data['charts'][chart][1] }}">
+                    </div>
                 </div>
-            </div>
+            {% endif %}
         {% endfor %}
     </section>
 {% endif %}

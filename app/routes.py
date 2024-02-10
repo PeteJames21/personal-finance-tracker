@@ -5,7 +5,7 @@ from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountFo
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from .utils.stats import get_summary_stats, get_summary_graphs, count_charts
+from .utils.stats import get_summary_stats, get_summary_graphs, count_charts, get_income_plots, get_expense_plots
 from .utils.flask_utils import get_current_profile, get_request_args
 from .models.engine.db_engine import IntegrityError
 
@@ -21,7 +21,6 @@ def index():
 @app.route('/home', methods=['GET', 'POST'])
 @login_required
 def home():
-    db.reload()
     all_profiles = db.get_profiles(current_user.username)
     data = get_request_args(request)
     stats = get_summary_stats(current_user.username, data['profile'],
@@ -87,22 +86,19 @@ def balances():
                            data=data, profiles=profiles)
 
 
-
-@app.route('/account', methods=['POST', 'GET'])
-def account():
-    """Serves page with summary"""
-    return render_template('home.html')
-
-
 @app.route('/income', methods=['POST', 'GET'])
+@login_required
 def income():
     """Serves incomes page"""
-    db.reload()
     all_profiles = db.get_profiles(current_user.username)
     data = get_request_args(request)
     stats = get_summary_stats(current_user.username, data['profile'],
                               from_=data['start_date'], to=data['end_date'])
     data.update(stats)
+    charts = get_income_plots(current_user.username, data['profile'],
+                              data['start_date'], data['end_date'])
+    data['charts'] = charts
+    data['chart_count'] = count_charts(charts)
     return render_template('income.html', title='Incomes',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.
@@ -110,14 +106,18 @@ def income():
 
 
 @app.route('/expense', methods=['POST', 'GET'])
+@login_required
 def expense():
     """Serves expenses page"""
-    db.reload()
     all_profiles = db.get_profiles(current_user.username)
     data = get_request_args(request)
     stats = get_summary_stats(current_user.username, data['profile'],
                               from_=data['start_date'], to=data['end_date'])
     data.update(stats)
+    charts = get_expense_plots(current_user.username, data['profile'],
+                               data['start_date'], data['end_date'])
+    data['charts'] = charts
+    data['chart_count'] = count_charts(charts)
     return render_template('expense.html', title='Expenses',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.

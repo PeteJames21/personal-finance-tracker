@@ -218,6 +218,7 @@ def reindex_series(s1: pd.Series, s2: pd.Series) -> tuple[pd.Series, pd.Series]:
     return s1_new, s2_new
 
 
+# TODO: use multiline_plot() for this function
 def monthly_cash_flows(incomes: pd.Series, expenses: pd.Series,
                        title: str = '') -> str:
     """
@@ -310,3 +311,110 @@ def count_charts(charts: dict) -> int:
         if charts[chart][1]:
             n += 1
     return n
+
+
+def multiline_plot(data: list[pd.Series], labels: list[str], title='') -> str:
+    """
+    Create a multi-line plot.
+
+    :param data: a list of Series objects containing the data for each line
+    :param labels: a list of labels to be associated with each Series
+    :param title: title to place above the plot
+    :return: a base64-encoded plot of the data
+    """
+    assert len(data) == len(labels), 'Data and labels must be of equal length'
+    n_empty = 0  # For counting series' with less than 3 data points
+    fig, ax = plt.subplots()
+    for i, series in enumerate(data, start=0):
+        if series.shape[0] < 2:
+            n_empty += 1
+        else:
+            ax.plot(series.sort_index(), label=labels[i])
+
+    if n_empty == len(data):
+        return ''  # No lines were plotted
+    ax.set_title(title)
+    plt.xticks(rotation=60)
+    plt.legend()
+    return fig_to_base64(fig)
+
+
+def plot_by_subcategory(username, profile, category, subcategories: list[str],
+                        from_=None, to=None) -> str:
+    """
+    Create a multi-line plot of the total monthly value of each subcategory.
+    """
+    data = []
+    labels = []
+    for subcategory in subcategories:
+        transactions = db.get_transactions(username, profile, category=category,
+                                           subcategory=subcategory, from_=from_, to=to)
+        if not transactions:
+            continue
+        df = pd.DataFrame(transactions)
+        series = aggregate_monthly(df)
+        data.append(series)
+        labels.append(subcategory)
+
+    if not data:
+        return ''
+    plot = multiline_plot(data, labels)
+    return plot
+
+
+def get_income_plots(username, profile, from_=None, to=None) -> dict:
+    """
+    Return a dict containing plots to be embedded into the 'incomes' page
+    """
+    # Donut chart of top incomes for the period
+    top_incomes = get_summary_stats(username, profile,
+                                    from_=from_, to=to)['top_incomes']
+    subcategories = [i[0] for i in top_incomes]
+    values = [i[1] for i in top_incomes]
+    graph_pie_incomes = donut_chart(
+        x=values,
+        labels=subcategories,
+    )
+    # Line chart of all total monthly incomes transactions for the top incomes
+    multiline_chart = plot_by_subcategory(username, profile, 'incomes',
+                                          subcategories, from_, to)
+
+    return {
+        'graph_pie_incomes': (
+            f"Top Income Sources ({from_} to {to})",
+            graph_pie_incomes
+        ),
+        'graph_line_top_incomes': (
+            'Trend of Total Monthly Income (Top 3 Incomes)',
+            multiline_chart
+        )
+    }
+
+
+def get_expense_plots(username, profile, from_=None, to=None) -> dict:
+    """
+    Return a dict containing plots to be embedded into the 'expenses' page
+    """
+    # Donut chart of top expenses for the period
+    top_expenses = get_summary_stats(username, profile,
+                                     from_=from_, to=to)['top_expenses']
+    subcategories = [i[0] for i in top_expenses]
+    values = [i[1] for i in top_expenses]
+    graph_pie_expenses = donut_chart(
+        x=values,
+        labels=subcategories,
+    )
+    # Line chart of all total monthly expense transactions for the top incomes
+    multiline_chart = plot_by_subcategory(username, profile, 'expenses',
+                                          subcategories, from_, to)
+
+    return {
+        'graph_pie_expenses': (
+            f"Top Expenses ({from_} to {to})",
+            graph_pie_expenses
+        ),
+        'graph_line_top_expenses': (
+            'Trend of Total Monthly Expenses (Top 3 expenses)',
+            multiline_chart
+        )
+    }
