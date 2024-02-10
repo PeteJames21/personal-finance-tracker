@@ -2,7 +2,10 @@
 preferred value: environment variable else hardcoded string
 '''
 import os
+from datetime import timedelta
+
 basedir = os.path.abspath(os.path.dirname(__file__))
+
 
 class Config:
     '''Stores configuration items'''
@@ -14,3 +17,4 @@ class Config:
     SESSION_USE_SIGNER = True
     SESSION_TYPE = 'filesystem'
     SESSION_PERMANENT = True
+    PERMANENT_SESSION_LIFETIME = timedelta(hours=1)
