@@ -2,7 +2,7 @@
 creates the application object as an instance of class Flask
 imported from the flask package
 """
-from flask import Flask
+from flask import Flask, request, session
 from flask_session import Session
 from config import Config
 from flask_login import LoginManager
@@ -23,9 +23,14 @@ def load_user(user_id):
     user = db.get_user_by_username(user_id)
     return user
 
+
 @app.before_request
-def reload_db():
+def pre_request():
     db.reload()
+    if start_date := request.args.get('startDate'):
+        session['start_date'] = start_date
+    if end_date := request.args.get('endDate'):
+        session['end_date'] = end_date
 
 
 from app import routes, models

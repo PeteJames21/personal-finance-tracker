@@ -26,8 +26,8 @@ def get_request_args(r: request) -> dict:
 
     Arguments that are not found are substituted with appropriate defaults.
     """
-    start_date = r.args.get('startDate')
-    end_date = r.args.get('endDate')
+    start_date = session.get('start_date')
+    end_date = session.get('end_date')
     profile = r.args.get('selectedProfile')
     if profile:
         session['profile'] = profile
