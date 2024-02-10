@@ -1,0 +1,19 @@
+<h2>Your Data at a Glance</h2>
+<!-- Include a graph and its title above it  -->
+{% if data['chart_count'] == 0 %}
+    <div class="chart-count-disclaimer">
+        Visualizations of your data will become available when the selected
+        time range has at least 3 transactions.
+    </div>
+{% else %}
+    <section class="charts-group">
+        {% for chart in data['charts'].keys() %}
+            <div class="chart-container">
+                <span class="chart-title">{{ data['charts'][chart][0] }}</span>
+                <div class="chart-area">
+                    <img src="data:image/svg+xml;base64,{{ data['charts'][chart][1] }}">
+                </div>
+            </div>
+        {% endfor %}
+    </section>
+{% endif %}

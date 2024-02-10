@@ -11,6 +11,12 @@ import seaborn as sns
 # Use matplotlib in non-interactive mode. Consider changing the backend
 # if a different image format besides SVG is needed.
 matplotlib.use('svg')
+# Increase the bottom axis padding to prevent rotated tick marks from
+# being truncated.
+plt.rcParams['figure.subplot.bottom'] = 0.2
+plt.rcParams['axes.titlesize'] = 14
+plt.rcParams['lines.marker'] = 'o'
+plt.rcParams['axes.labelsize'] = 14
 
 
 def get_transactions_total(transactions: list[dict]):
@@ -99,7 +105,9 @@ def pie_chart(x: list[int | float], labels: list[str], title: str = '') -> str:
     return fig_to_base64(fig)
 
 
-def get_summary_graphs(username, profile, from_=None, to=None) -> dict:
+def get_summary_graphs(username, profile, top_incomes: list[tuple[str, int]],
+                       top_expenses: list[tuple[str, int]],
+                       from_=None, to=None) -> dict:
     """TODO: add docstring"""
     # Get all transactions for the period
     transactions = db.get_transactions(username, profile, from_=from_, to=to)
@@ -120,28 +128,51 @@ def get_summary_graphs(username, profile, from_=None, to=None) -> dict:
         incomes_monthly = incomes_monthly.squeeze(axis=1)
     if not expenses_monthly.empty:
         expenses_monthly = expenses_monthly.squeeze(axis=1)
-    print("---------------before reindexing---------------")
-    print("---------------incomes_monthly-\n", incomes_monthly)
-    print("-------------expenses-monthly\n", expenses_monthly)
+    # print("---------------before reindexing---------------")
+    # print("---------------incomes_monthly-\n", incomes_monthly)
+    # print("-------------expenses-monthly\n", expenses_monthly)
     incomes_monthly, expenses_monthly = reindex_series(incomes_monthly, expenses_monthly)
     net_monthly = incomes_monthly - expenses_monthly
-    print("---------------After reindexing---------------")
-    print("---------------incomes_monthly\n", incomes_monthly)
-    print("---------------expenses_monthly\n", expenses_monthly)
-    print("-----------------net\n", net_monthly)
+    # print("---------------After reindexing---------------")
+    # print("---------------incomes_monthly\n", incomes_monthly)
+    # print("---------------expenses_monthly\n", expenses_monthly)
+    # print("-----------------net\n", net_monthly)
 
     # Plot of monthly incomes and expenses
-    # TODO: do not plot lines for Series with only one month of data
     monthly_income_expenses = monthly_cash_flows(
         incomes_monthly, expenses_monthly,
-        title='Trend: Total Monthly Incomes and Expenses'
     )
     # Plot of monthly net income
-    monthly_net_income = line_plot(net_monthly, 'Trend: Monthly Net Income')
+    monthly_net_income = line_plot(net_monthly)
+    # Plots of top incomes and expenses
+    graph_pie_incomes = donut_chart(
+        x=[i[1] for i in top_incomes],
+        labels=[i[0] for i in top_incomes],
+        # title='Top Income Sources'
+    )
+    graph_pie_expenses = donut_chart(
+        x=[i[1] for i in top_expenses],
+        labels=[i[0] for i in top_expenses],
+        # title='Top Expenses'
+    )
 
     return {
-        'graph_line_monthly_cash_flows': monthly_income_expenses,
-        'graph_line_monthly_net_income': monthly_net_income
+        'graph_pie_incomes': (
+            f"Top Income Sources ({from_} to {to})",
+            graph_pie_incomes
+        ),
+        'graph_pie_expenses': (
+            f"Top Expenses ({from_} to {to})",
+            graph_pie_expenses
+        ),
+        'graph_line_monthly_cash_flows': (
+            'Trend: Total Monthly Incomes and Expenses',
+            monthly_income_expenses
+        ),
+        'graph_line_monthly_net_income': (
+            'Trend: Monthly Net Income',
+            monthly_net_income
+        ),
     }
 
 
@@ -203,8 +234,6 @@ def monthly_cash_flows(incomes: pd.Series, expenses: pd.Series,
     fig, ax = plt.subplots()
     ax.plot(incomes, label='Total Monthly Income')
     ax.plot(expenses, label='Total Monthly Expenses')
-    if not title:
-        title = 'Trend of Total Monthly Income and Expenses'
     ax.set_title(title)
     ax.set_xlabel('Month')
     plt.xticks(rotation=60)
@@ -214,7 +243,7 @@ def monthly_cash_flows(incomes: pd.Series, expenses: pd.Series,
 
 def line_plot(data: pd.Series, title: str = '') -> str:
     """
-    TODO: make doc
+    Create a single line plot using the data.
     """
     if data.empty or data is None:
         return ''
@@ -252,15 +281,32 @@ def donut_chart(x, labels, title='') -> str:
     if not x or len(x) < 2:
         return ''
     # Sample data
-    fig, ax = plt.subplots(figsize=(8, 8))
-    ax.pie(x, labels=labels, autopct='%1.1f%%', startangle=90)
+    fig, ax = plt.subplots(figsize=(7, 7))
+    ax.pie(x, labels=None, autopct='%1.0f%%', startangle=90)
 
     # Draw circle in the center
     centre_circle = plt.Circle((0, 0), 0.7, color='black', fc='white', linewidth=0)
     ax.add_artist(centre_circle)
     # Equal aspect ratio ensures that pie is drawn as a circle
     plt.axis('equal')
-
-    # Add title
+    plt.legend(labels, loc='upper right',
+               bbox_to_anchor=(1.3, 0.7)
+    )
+    # Adjust the position of `ax` within `fig` to leave room for the legend
+    plt.subplots_adjust(left=0, right=0.7, top=1, bottom=0)
     ax.set_title(title)
     return fig_to_base64(fig)
+
+
+def count_charts(charts: dict) -> int:
+    """
+    Return the number of charts.
+
+    The function iterates over the dict and counts the number of values
+    for which the base64 string representing the chart is not empty.
+    """
+    n = 0
+    for chart in charts:
+        if charts[chart][1]:
+            n += 1
+    return n

@@ -5,7 +5,7 @@ from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountFo
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
 from werkzeug.security import generate_password_hash, check_password_hash
-from .utils.stats import get_summary_stats, get_summary_graphs, pie_chart, donut_chart
+from .utils.stats import get_summary_stats, get_summary_graphs, count_charts
 from .utils.flask_utils import get_current_profile, get_request_args
 from .models.engine.db_engine import IntegrityError
 
@@ -28,28 +28,18 @@ def home():
                               from_=data['start_date'], to=data['end_date'])
     data.update(stats)
     # Generate visualizations.
-    # Format: charts = { 'chart_name': 'base64-encoded chart (str)', ... }
+    # Format: charts = { 'chart_name': ('title', 'base64-encoded chart'), ... }
     charts = get_summary_graphs(
         username=current_user.username,
         profile=data['profile'],
+        top_incomes=data['top_incomes'],
+        top_expenses=data['top_expenses'],
         from_=data['start_date'],
         to=data['end_date']
     )
-    # Generate pie charts for total incomes and expenses
-    # TODO: move this logic to utils/stats.py
-    graph_pie_incomes = donut_chart(
-        x=[i[1] for i in data['top_incomes']],
-        labels=[i[0] for i in data['top_incomes']],
-        title='Top Income Sources'
-    )
-    graph_pie_expenses = donut_chart(
-        x=[i[1] for i in data['top_expenses']],
-        labels=[i[0] for i in data['top_expenses']],
-        title='Top Expenses'
-    )
-    charts['graph_pie_incomes'] = graph_pie_incomes
-    charts['graph_pie_expenses'] = graph_pie_expenses
-    data.update(charts)
+    n_charts = count_charts(charts)  # The number of non-empty charts
+    data['charts'] = charts
+    data['chart_count'] = n_charts
     return render_template('home.html', title='Home',
                            user=current_user,
                            profiles=all_profiles,  # Needed by JS.

@@ -1,0 +1,19 @@
+.charts-group {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
+  grid-gap: 5px; /* Gap between grid items */
+}
+
+.chart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center items horizontally */
+}
+
+.chart-title {
+  margin-bottom: 5px; /* Add spacing between title and image */
+}
+
+.chart-area img {
+  max-width: 100%; /* Ensure images don't exceed container width */
+}
