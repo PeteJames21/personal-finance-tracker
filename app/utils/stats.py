@@ -329,7 +329,7 @@ def multiline_plot(data: list[pd.Series], labels: list[str], title='') -> str:
         if series.shape[0] < 2:
             n_empty += 1
         else:
-            ax.plot(series.sort_index(), label=labels[i])
+            ax.plot(series.sort_index(), label=labels[i], marker='')
 
     if n_empty == len(data):
         return ''  # No lines were plotted
@@ -369,8 +369,8 @@ def get_income_plots(username, profile, from_=None, to=None) -> dict:
     # Donut chart of top incomes for the period
     top_incomes = get_summary_stats(username, profile,
                                     from_=from_, to=to)['top_incomes']
-    subcategories = [i[0] for i in top_incomes]
-    values = [i[1] for i in top_incomes]
+    subcategories = [i[0] for i in top_incomes][:3]
+    values = [i[1] for i in top_incomes][:3]
     graph_pie_incomes = donut_chart(
         x=values,
         labels=subcategories,
@@ -398,8 +398,8 @@ def get_expense_plots(username, profile, from_=None, to=None) -> dict:
     # Donut chart of top expenses for the period
     top_expenses = get_summary_stats(username, profile,
                                      from_=from_, to=to)['top_expenses']
-    subcategories = [i[0] for i in top_expenses]
-    values = [i[1] for i in top_expenses]
+    subcategories = [i[0] for i in top_expenses][:3]
+    values = [i[1] for i in top_expenses][:3]
     graph_pie_expenses = donut_chart(
         x=values,
         labels=subcategories,
