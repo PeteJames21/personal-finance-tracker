@@ -1,0 +1,62 @@
+.site-footer {
+    padding: 20px 0;
+    width: 100%;
+    background-color: rgb(23, 36, 54);
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    color: aliceblue;
+    text-align: center;
+}
+
+.footer-content {
+    width: 90%;
+    margin: 0 auto;
+}
+.description{
+    text-align: center;
+    color: aliceblue;
+}
+
+.contacts {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-around;
+}
+.contacts h4{
+    color: rgb(237, 237, 237);
+}
+.contacts ul li {
+    color: rgb(237, 237, 237);
+}
+.contacts .orina{
+
+    width: 50%;
+    text-align: center;
+
+}
+.contacts .bencity{
+    width: 50%;
+    text-align: center;
+}
+.contacts .bencity .socials{
+    text-align: left;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.contacts .orina .socials{
+
+    width: 60%;
+    text-align: left;
+    margin: 0 auto;
+
+}
+
+.contacts .orina .socials ul, .contacts .bencity .socials ul {
+    list-style-type: none;
+
+}

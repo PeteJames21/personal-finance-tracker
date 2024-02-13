@@ -1,11 +1,21 @@
-:root {
+/* :root {
     --profile_bg: #d9f0fd;
     --profile_height: 60px;
 
     --main-blue: #9ceaff;
     --bg-color: #f2f2f2;
 
-}
+ } */
+ :root {
+    --secondary-bg-light-blue: #eef6ff;
+    --tertiary-orange-bright: #fd830d;
+    --secondary-dark-blue: #0f1e6a;
+    --secondary-color: #f9fafe;
+
+    --max-width: 1200px;
+    --primary-bright-blue: #f0fcfc;
+    --section-background: #E9F1FA;
+  }
 * {
     margin: 0;
     padding: 0px;
@@ -44,6 +54,10 @@
     width: 70%; /* Adjust as needed */
     text-align: center;
 }
+.header-summary h3, .totals .total-label h4 {
+    color: var(--secondary-dark-blue);
+    font-weight: bold;
+}
 
 /* Additional styling if desired */
 .head-bar h3 {
@@ -51,28 +65,24 @@
 }
 /* STYLING ADD A PROFILE button */
 .profile-bar .add-profile .button{
-    background-color: #79bbe7;
+    background-color: #0a93ef;
     font-size: larger;
 }
 
 #add-profile, #switch-prof{
     display: inline-block;
-    padding: 5px;
-    font-size: 16px;
-
+    padding: 10px;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-    background-color: #1275c1;
-    color: #fff;
-    border: 2px solid #b3d9f7;
+
     text-wrap: nowrap;
 }
 #add-profile:hover,  #switch-prof:hover{
     background-color: #4a90e2;
     color: #fff;
-    border-color: #4a90e2;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
   }
 .profile-bar .switch-profiles{
     display: flex;
@@ -95,8 +105,11 @@
     display: none;
     position: absolute;
     background-color: #d5f0fe;
+    width: 100%;
     min-width: 100px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
     z-index: 1;
 }
 
@@ -124,9 +137,13 @@
     align-items:center;
     margin-top: 5px;
     margin: 15px auto;
-    background-color: var(--profile_bg);
+  /*   background-color: var(--profile_bg);/* */
     height: var(--profile_height);
     position: relative;
+    background-color:  var(--primary-bright-blue);
+    padding: 5px;
+
+
 }
 
 .profile .user-profile {
@@ -145,7 +162,8 @@
 }
 
 .profile-bar{
-    background-color: #79bbe7;
+    /* background-color: #79bbe7; */
+    background-color: var(--primary-bright-blue);
     margin-top: 0;
 }
 /* style for dropdown calendar */
@@ -183,7 +201,7 @@
 /* Style for the submit button */
 #dateFilterForm button {
     padding: 3px;
-    background-color: #5c48ee;
+
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -192,9 +210,7 @@
 }
 
 /* Change button color on hover */
-#dateFilterForm button:hover {
-    background-color: #4a3aa5;
-}
+
 
 /* style add account */
 #add-p{
@@ -211,18 +227,14 @@
 }
 
 /* Style for the label */
-
-
-
-
-
 /* Style for the totals section */
 .totals {
     display: flex;
     flex-wrap: nowrap; /* Allow items to wrap to the next line if needed */
     justify-content: space-between;
     margin-top: 5px;
-    background-color: #f7f5f5; /* Background color for the entire section */
+    background-color: var(--section-background); /* Background color for the entire section */
+ /* Background color for the entire section */
     padding: 5px;
     box-sizing: border-box;
     align-items: start;
@@ -235,7 +247,7 @@
     background-color: var(--profile_bg); /* Background color for individual containers */
     padding: 15px;
     box-sizing: border-box;
-    background-color: bisque;
+    background-color: var(--primary-bright-blue);
 
 }
 .totals .total-label, .totals .total-amount, .totals .top-items {
@@ -253,7 +265,7 @@
 .totals .total-label h3 {
     margin-bottom: 10px;
     color: #333; /* Text color for labels */
-    font-weight: ;
+
 
 }
 

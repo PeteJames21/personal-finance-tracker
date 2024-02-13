@@ -1,10 +1,31 @@
 :root {
-    --main-blue: #f00c1b;
+    --main-blue: #ee0514;
     --bg-color: #f2f2f2;
-    --button-color: #5c48ee;
+    --button-color: #1275c1;
+    --button-border: #fff;
+
 
 }
+:root {
+    --secondary-bg-light-blue: #F5F5F5;
+    --tertiary-orange-bright: #fd830d;
+    --secondary-dark-blue: #0f1e6a;
+    --secondary-color: #f9fafe;
 
+
+    --max-width: 1200px;
+    --primary-bright-blue: #fff;
+  }
+
+  .block-content{
+
+    width: var(--max-width);
+    margin: 0 auto;
+  }
+
+body {
+   background-color: var(--secondary-bg-light-blue);
+}
 /* contains styling for the navbar*/
 
 * {
@@ -13,14 +34,19 @@
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
 
+
+}
+.navbar {
+    background-color: var(--primary-bright-blue) ;
+    /* background-color: #5e92fa;; */
+    /* background-color:#ffffff; */
 }
 
 
-/* Basic styling for the navbar */
 nav {
-    background-color: var(--main-blue);
+
     overflow: hidden;
-    color: white;
+    color: rgb(255, 255, 255);
     display: flex; /* Use flexbox */
     justify-content: space-between; /* Distribute items with space between */
 
@@ -34,9 +60,13 @@ nav .navbar-brand{
     justify-content: space-between;
     align-items: center;
     font-size:medium; /* In media queries, if width reduces change flex direction to column */
+
 }
 nav .navbar-brand p{
     margin: 0 auto;
+
+    color: var(--secondary-dark-blue);
+    font-weight: bold;
 }
 
 
@@ -50,7 +80,7 @@ nav .navbar-brand p{
 .nav-items a {
     padding: 14px 16px;
     text-decoration: none;
-    color: white;
+    color: #5e92fa;
 }
 
 /* Change color on hover */
@@ -60,9 +90,7 @@ nav .navbar-brand p{
 }
 
 
-.navbar {
-    background-color: var(--main-blue) ;
-}
+
 
 #navbarNav {
     display: flex;
@@ -71,7 +99,8 @@ nav .navbar-brand p{
 }
 
 #navbarNav .navbar-nav .nav-item {
-    color: rgb(16, 75, 203);
+    color: var(--secondary-dark-blue);
+    font-weight: bold;
 }
 #hey.navbar {
     margin-bottom: 0;
@@ -82,18 +111,21 @@ nav .navbar-brand p{
 }
 
 button {
-    background-color: var(--button-color);
-    border: none;
+    background-color: var(--button-color) ;
+    border: 2px solid #fff;
+   /*  color: var(--button-border); */
     color: white;
     padding: 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     cursor: pointer;
-    border-radius: 5px;
+    border-radius: 10px;
     transition: background-color 0.3s;
 }
 
 button:hover {
-    background-color: #485BEE;
+    background-color: #4a90e2;
+    color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }

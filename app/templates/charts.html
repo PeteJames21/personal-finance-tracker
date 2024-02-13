@@ -1,4 +1,5 @@
-<h2>Your Data at a Glance</h2>
+<section class="charts">
+    <h3 class="charts-header">Your Data at a Glance</h3>
 <!-- Include a graph and its title above it  -->
 {% if data['chart_count'] == 0 %}
     <div class="chart-count-disclaimer">
@@ -19,3 +20,5 @@
         {% endfor %}
     </section>
 {% endif %}
+
+</section>

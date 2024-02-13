@@ -4,17 +4,26 @@
     grid-gap: 10px; /* Gap between grid items */
     margin-top: 5px;
     background-color: #f7f5f5; /* Background color for the entire section */
+    background-color: var(--section-background); /* Background color for the entire section */
     padding: 5px;
     box-sizing: border-box;
     align-items: start;
+    margin-bottom: 12rem;
 }
 
 .account-balance {
     padding: 0px;
     text-align: center;
-    background-color: #ffe4c4;
+    background-color: var( --secondary-bg-light-blue);
     display: flex;
     align-items: center; /* Corrected from 'totalcenter' to 'center' */
     justify-content: center;
     height: 60px;
+
+    account-totals
+
+}
+h4 {
+    color: var(--secondary-dark-blue);
+    font-weight: bold;
 }

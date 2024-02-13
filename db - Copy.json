@@ -1,0 +1,715 @@
+{
+    "messi": {
+        "email": "messi@gmail.com",
+        "password": "scrypt:32768:8:1$0Bv0hOdDSulEzgHT$8308e9d493ba71b2344feac2cfabe60b0b70844ed765063e43dc86a55d4d564e8fb205b291cd55d2e4fea67d7353ad1376494276fde16f6ca04c781c2ce27480",
+        "id": 1,
+        "default_profile": "personal",
+        "profiles": {
+            "personal": {
+                "description": "",
+                "accounts": {
+                    "Cash": {
+                        "balance": 10146.0,
+                        "description": "cash at hand",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 500.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Gift",
+                                    "time": "2024-02-02",
+                                    "id": "7bc1793b-14bc-4f8c-a6af-37222886d413",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Dividends",
+                                    "time": "2024-02-02",
+                                    "id": "3ed33423-e2a5-4553-a332-48dc0f776a52",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 6666.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "salary",
+                                    "time": "2024-02-02",
+                                    "id": "822999ee-3457-4dd7-be17-1860a2258a24",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Mum",
+                                    "time": "2024-02-02",
+                                    "id": "6cb0e476-4ad9-4ba3-aa62-72bc3ff5c35a",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [
+                                {
+                                    "amount": 70.0,
+                                    "account_debited": "",
+                                    "account_credited": "Cash",
+                                    "subcategory": "mutura",
+                                    "time": "2024-02-02",
+                                    "id": "dd43cf45-1460-4eed-b40b-f3dd0daa7f89",
+                                    "user_id": "messi",
+                                    "category": "expenses"
+                                }
+                            ],
+                            "transfers": []
+                        }
+                    },
+                    "Mpesa": {
+                        "balance": 95399.0,
+                        "description": "Mpesa balance",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 100.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "writing",
+                                    "time": "2024-02-02",
+                                    "description": "pod tuesday",
+                                    "id": "a5c70cb5-7489-47ab-a759-85b85131b895",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 2100.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "savings",
+                                    "time": "2024-02-06",
+                                    "description": "",
+                                    "id": "d92aaa94-3130-4a99-b2d9-cba96a6fe08e",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 4444.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "salary",
+                                    "time": "2024-02-06",
+                                    "description": "",
+                                    "id": "d66f509a-6b26-40ae-8862-e50cf3962ddb",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 87000.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "Dividends",
+                                    "time": "2024-02-06",
+                                    "description": "",
+                                    "id": "671c588d-b17c-4f93-a3a4-e000b44748cd",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "savings",
+                                    "time": "2024-02-07",
+                                    "description": "",
+                                    "id": "f03942cf-7700-4dc1-a0a7-cb8802d6733e",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 670.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "salary",
+                                    "time": "2024-02-07",
+                                    "description": "",
+                                    "id": "d4233cf2-74d7-4458-8be8-f6321479e879",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 0.0,
+                                    "account_debited": "Mpesa",
+                                    "account_credited": "",
+                                    "subcategory": "Writing",
+                                    "time": "2024-02-07",
+                                    "description": "",
+                                    "id": "37bf3b08-0d7d-42d6-b7ef-7bc557c3f472",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [
+                                {
+                                    "amount": 100.0,
+                                    "account_debited": "",
+                                    "account_credited": "Mpesa",
+                                    "subcategory": "shoes",
+                                    "time": "2024-02-02",
+                                    "id": "109a211f-27d3-4540-9bf0-2eacdb7f3343",
+                                    "user_id": "messi",
+                                    "category": "expenses"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "",
+                                    "account_credited": "Mpesa",
+                                    "subcategory": "Stima",
+                                    "time": "2024-02-02",
+                                    "description": "paid for electricity",
+                                    "id": "66ce8a3c-2d17-4bc3-b851-049026df2877",
+                                    "user_id": "messi",
+                                    "category": "expenses"
+                                },
+                                {
+                                    "amount": 10.0,
+                                    "account_debited": "",
+                                    "account_credited": "Mpesa",
+                                    "subcategory": "airtime",
+                                    "time": "2024-02-07",
+                                    "description": "",
+                                    "id": "cf045150-9b24-4fe9-9b8d-d87d67425e8d",
+                                    "user_id": "messi",
+                                    "category": "expenses"
+                                }
+                            ],
+                            "transfers": []
+                        }
+                    },
+                    "Mshwari": {
+                        "balance": 4200.0,
+                        "description": "savings",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 2100.0,
+                                    "account_debited": "Mshwari",
+                                    "account_credited": "",
+                                    "subcategory": "savings",
+                                    "time": "2024-02-02",
+                                    "id": "b5301de4-fc5c-4df2-bf12-1adb5086cee6",
+                                    "user_id": "messi",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [
+                                {
+                                    "amount": 400.0,
+                                    "account_debited": "",
+                                    "account_credited": "Mshwari",
+                                    "subcategory": "Loan to friend",
+                                    "time": "2024-02-02",
+                                    "id": "991ff470-b5cb-4392-b0f8-5381951079c5",
+                                    "user_id": "messi",
+                                    "category": "expenses"
+                                }
+                            ],
+                            "transfers": []
+                        }
+                    },
+                    "sadaka": {
+                        "balance": 66.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    },
+                    "chelsea": {
+                        "balance": 56.0,
+                        "description": "r",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    },
+                    "Barca": {
+                        "balance": 0.0,
+                        "description": "d",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    },
+                    "Pete": {
+                        "balance": 0.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    },
+                    "JOhn": {
+                        "balance": 0.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            },
+            "CATCOM": {
+                "description": "church",
+                "accounts": {}
+            },
+            "Haniel": {
+                "description": "Maskani",
+                "accounts": {
+                    "Cash": {
+                        "balance": 2000.0,
+                        "description": "yes",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            },
+            "SOG": {
+                "description": "hey",
+                "accounts": {}
+            }
+        }
+    },
+    "tabu": {
+        "email": "tabu@gmail.com",
+        "password": "scrypt:32768:8:1$H1j0h9qXpelf2znc$b7d9a8daffe57aa01806621646e89b67f8639eae659948e027d2bd0c2806818efc642d93a69c41f558ec9c3c106f005ef3851410e42cd041d6d0de29b3677ef3",
+        "id": 2,
+        "default_profile": "jkuat",
+        "profiles": {
+            "personal": {
+                "description": "",
+                "accounts": {
+                    "Cash": {
+                        "balance": 1000.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "savings",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "28152f8f-5374-4079-b743-7afc81c36f63",
+                                    "user_id": "tabu",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    },
+                    "Chelsea": {
+                        "balance": 2000.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            },
+            "charity": {
+                "description": "",
+                "accounts": {
+                    "Cash": {
+                        "balance": 4100.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 2100.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "savings",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "9729dde4-048d-4b18-a8ba-76acbba38e22",
+                                    "user_id": "tabu",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Shoes",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "ef341bb7-af33-41a0-b1c8-00afd93dd9b1",
+                                    "user_id": "tabu",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "a0847160-4608-4172-81b6-7daba3eb0c65",
+                                    "user_id": "tabu",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            },
+            "CATCOM": {
+                "description": "church money",
+                "accounts": {}
+            },
+            "jkuat": {
+                "description": "some mulla",
+                "accounts": {
+                    "Cash": {
+                        "balance": 0.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "lord": {
+        "email": "lord@gmail.com",
+        "password": "scrypt:32768:8:1$btOX3froXjRh0OKw$8f05144408b495970fdec8a9c79da838e9c6e569f5b096b0a0bc5abb4f39967ba3ebe274e9524bf670fc71ceb206d8c56348c462092022f2c79368daa62e5c10",
+        "id": 3,
+        "default_profile": "personal",
+        "profiles": {
+            "personal": {
+                "description": "",
+                "accounts": {
+                    "Cash": {
+                        "balance": 0.0,
+                        "description": "ssss",
+                        "transactions": {
+                            "incomes": [],
+                            "expenses": [],
+                            "transfers": []
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "nelly": {
+        "email": "nelly@gmail.com",
+        "password": "scrypt:32768:8:1$CufOZQcRXhet9aiQ$29d3283ea415546beaa1f2b3f04ea0992e1d67e1e95994458b3004dc8e015d070e208c3b77f483b4c1cee46398fefb36eeb0ce17f5261d147880281d1242ae1b",
+        "id": 4,
+        "default_profile": "personal",
+        "profiles": {
+            "personal": {
+                "description": "",
+                "accounts": {
+                    "Cash": {
+                        "balance": 5070.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Shoes",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "3e85e3d2-3ba0-451a-a0f9-7d6d2eb465b6",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "d12b289f-e04c-468a-bb74-a9a7d2c5ae66",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Dividends",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "68274037-d8fa-41df-9340-811a13c970f6",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "",
+                                    "subcategory": "Shoes",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "c881c9e8-19be-49f5-8953-f8e444c36663",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Gift",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "774c8478-7467-490b-9abc-c9d8c86bea86",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "Cash",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "e5619ccd-40b8-4c6b-838a-96402967833b",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Writing",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "741edf23-751c-4b01-99ed-6b72312e9939",
+                                    "user_id": "nelly",
+                                    "category": "expenses"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Gift",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "36476fe4-a7b7-4d9a-8d79-59b40eb10c0b",
+                                    "user_id": "nelly",
+                                    "category": "expenses"
+                                }
+                            ],
+                            "transfers": [
+                                {
+                                    "amount": 20.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "MMF",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "savings",
+                                    "id": "6dd0fa1e-1c30-4a06-953e-1e98d90729be",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                }
+                            ]
+                        }
+                    },
+                    "MMF": {
+                        "balance": 981.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "MMF",
+                                    "account_credited": "MMF",
+                                    "subcategory": "salary",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "33b59f2d-96a8-494b-98bb-3a0bf3b5aff2",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1001.0,
+                                    "account_debited": "MMF",
+                                    "account_credited": "Cash",
+                                    "subcategory": "salary",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "f1ff5f71-49fa-4e9f-bad4-3b44396d0f17",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [],
+                            "transfers": [
+                                {
+                                    "amount": 20.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "MMF",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "savings",
+                                    "id": "6dd0fa1e-1c30-4a06-953e-1e98d90729be",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Equity",
+                                    "account_credited": "MMF",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "7bfb6e63-c078-495e-befe-50caa52f0a56",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                }
+                            ]
+                        }
+                    },
+                    "Equity": {
+                        "balance": 3100.0,
+                        "description": "Equity bank",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Equity",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Writing",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "d55d2b27-7d8a-4b93-8838-d923934e0de4",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                },
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Equity",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Gift",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "8c675d76-28bb-4128-bb55-5e30fb3ef16c",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [],
+                            "transfers": [
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Bencity",
+                                    "account_credited": "Equity",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "14ec790c-e4fb-4c29-ae5c-71b79cc3b194",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Equity",
+                                    "account_credited": "MMF",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "7bfb6e63-c078-495e-befe-50caa52f0a56",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                }
+                            ]
+                        }
+                    },
+                    "Bencity": {
+                        "balance": 1050.0,
+                        "description": "",
+                        "transactions": {
+                            "incomes": [
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Bencity",
+                                    "account_credited": "Cash",
+                                    "subcategory": "Dividends",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "2bf198ca-e583-416a-b0f3-4bfe0056ab2a",
+                                    "user_id": "nelly",
+                                    "category": "incomes"
+                                }
+                            ],
+                            "expenses": [
+                                {
+                                    "amount": -50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "Bencity",
+                                    "subcategory": "gift",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "d6d25970-4aa9-44b8-ba93-d7a5cc7cde00",
+                                    "user_id": "nelly",
+                                    "category": "expenses"
+                                },
+                                {
+                                    "amount": 50.0,
+                                    "account_debited": "Cash",
+                                    "account_credited": "Bencity",
+                                    "subcategory": "Shoes",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "4f27e502-c5d7-43fd-8950-e1e3f15f6d7e",
+                                    "user_id": "nelly",
+                                    "category": "expenses"
+                                }
+                            ],
+                            "transfers": [
+                                {
+                                    "amount": 1000.0,
+                                    "account_debited": "Bencity",
+                                    "account_credited": "Equity",
+                                    "subcategory": "",
+                                    "time": "2024-02-08",
+                                    "description": "",
+                                    "id": "14ec790c-e4fb-4c29-ae5c-71b79cc3b194",
+                                    "user_id": "nelly",
+                                    "category": "transfers"
+                                }
+                            ]
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

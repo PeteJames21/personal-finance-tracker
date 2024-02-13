@@ -1,3 +1,20 @@
+/* styling for the charts section */
+
+.charts{
+  margin-top: 5px;
+  background-color: var(--section-background);
+  margin-bottom: 1rem;
+}
+
+.charts-header{
+    color: var(--secondary-dark-blue);
+    font-weight: bold;
+    text-align: center;
+}
+
+.chart-count-disclaimer{
+  text-align: center;
+}
 .charts-group {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns with equal width */
@@ -8,12 +25,21 @@
   display: flex;
   flex-direction: column;
   align-items: center; /* Center items horizontally */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 25px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
 }
 
 .chart-title {
   margin-bottom: 5px; /* Add spacing between title and image */
+  font-weight: bold;
+  text-align: center;
 }
 
 .chart-area img {
   max-width: 100%; /* Ensure images don't exceed container width */
+  max-height: 500px;
+
 }
