@@ -5,3 +5,6 @@ flask_session/
 .flaskenv
 db.json
 notes
+h.py
+dbCopy.json
+flaskalx/
