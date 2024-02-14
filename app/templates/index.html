@@ -16,24 +16,89 @@
         <li class="link"><a href="">Learn More</a></li>
     </ul>
     </nav>
-    <section class="container">
-        <div class="content-container">
-            <h1>
-                Track your <br>
-                <span class="heading-1">Income </span><br>
-                and <span class="heading-1">Expenses </span><br>
-            </h1>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, nostrum, ducimus modi repellendus tenetur itaque dolores numquam inventore non facere nesciunt explicabo architecto placeat provident natus voluptatem eaque veritatis saepe!
-            </p>
+    <div class="cover-image">
+        <section class="container">
+
             <div class="content-container">
-                <button><a class="register-button" href="{{ url_for('register') }}">Register</a></button>
+                <h1>
+                    Track your <br>
+                    <span class="heading-1">Income </span><br>
+                    and <span class="heading-1">Expenses </span><br>
+                </h1>
+                <p>Manage your finances effortlessly with our intuitive income and expense tracking app. Stay organized, set budgets, and gain insights into your spending habits. Take control of your financial journey today!
+                </p>
+                <div class="content-container">
+                    <button><a class="register-button" href="{{ url_for('register') }}">Register</a></button>
+                </div>
+            </div>
+            <div class="image-container">
+                <img src="../static/images/landing.png" alt="hero-image">
+            </div>
+        </section>
+    </div>
+
+    <section class="features">
+        <h1 class="features-head">App's Features</h1>
+        <div class="app-features">
+            <div class="register">
+                <div class="feature-header"><h4>Register</h4></div>
+                <div class="image"><img src="../static/images/register.jpg" alt=""></div>
+                <div class="description"><p>
+                    Once you create an account, Personal Finance Tracker creates an account and assigns the default profile of Personal. Profiles are the container that holds all of one's accounts in one place. In each profile, a user can create accounts which correspond to the containers that hold money e.g. Cash, Credit Card, MPesa etc.
+                </p></div>
+            </div>
+            <div class="add-income">
+                <div class="feature-header"><h4>Add Income/Expense</h4></div>
+                <div class="image"><img src="../static/images/income.jpg" alt=""></div>
+                <div class="description"><p>
+                    To add an income/expense, click on the add transaction button, toggle down and select either income, expense or transfer. For income, you need to enter the account debited, for expense an account credited is required while for transfer, bot fields are necessary. The Source/Destination documents where the money came from or the purpose of the expenditure.
+                </p></div>
+            </div>
+            <div class="add-transaction">
+                <div class="feature-header"><h4>Dashboard</h4></div>
+                <div class="image"><img src="../static/images/dashboard.jpg" alt=""></div>
+                <div class="description"><p>
+                    The home page provides an overview of the user's transactions. The filter by date allows for filtered responses between certain periods of time. Te dashboard displays the total incomes, expenses and te net income. It allows displays a list of top 5 items under each.
+                </p></div>
             </div>
         </div>
-        <div class="image-container">
-            <img src="../static/images/landing.png" alt="hero-image">
-        </div>
-
-
     </section>
+    <section class="our-story">
+        <h2>About the Project</h2>
+        <div class="about-desc">
+            <p>
+                This project arose from a mutual desire to have a personalized application for tracking incomes and expenses. We are both freelancers, and our incomes tend to be unpredictable and outside the bounds of monthly or weekly income. There was a pressing need to keep track of our individual finances and be aware of incomes and expenditures. We carried the profile feature to increase the utility of the application as it can be used for non-personal uses such as managing corporate money. For our ALX SE project, we decided to develop this application - talk of killing two birds with one stone!
+            </p>
+        </div>
+    </section>
+
+    <section class="site-footer">
+
+        <div class="footer-content">
+            <p class="desc">A project by Benson Maina and Peter Ndung'u</p>
+        </div>
+        <div class="contacts">
+            <div class="orina">
+                <h4>Peter Ndung'u</h4>
+                <div class="socials">
+                    <ul>
+                        <li>Github: <i class="fa fa-github" style="font-size:18px;color:whitesmoke"></i> - <a href="https://github.com/PeteJames21">PeteJames21</a></li>
+                        <li>LinkedIn: <i class="fa fa-linkedin-square" style="font-size:18px;color:whitesmoke"></i> - <a href="https://github.com/PeteJames21">PeteJames21</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="bencity">
+                <h4>Benson Maina</h4>
+                <div class="socials">
+                    <ul>
+                        <li>Github: <i class="fa fa-github" style="font-size:18px;color:whitesmoke"></i> - <a href="https://github.com/Gabogogi">Gabogogi</a></li>
+                        <li>LinkedIn: <i class="fa fa-linkedin-square" style="font-size:18px;color:whitesmoke"></i> - <a href="https://www.linkedin.com/in/benson-maina-a47b05295/">Benson Maina</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
 </body>
 </html>

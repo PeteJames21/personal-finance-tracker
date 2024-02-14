@@ -4,9 +4,9 @@
 
 <section class="profile-bar">
     <div class="head-bar">
-        <div class="current_user">
-            <div class="current_user">From:  {{ data['start_date'] }}</div>
-            <div class="current-profile">To: {{ data['end_date'] }}</div>
+        <div class="filter-date">
+            <div class="from-date"><strong>From:</strong> {{ data['start_date'] }}</div>
+            <div class="to-date"><strong>To:</strong> {{ data['end_date'] }}</div>
         </div>
 
         <div class="header-summary"><h3>Income Overview</h3></div>
@@ -52,8 +52,8 @@
     </div>
 </section>
 
-<section class="totals">
-    <div class="total-income">
+<section class="totals totals-i">
+    <div class="total-income ">
         <div class="total-label">
             <h4>Total Income</h4>
         </div>

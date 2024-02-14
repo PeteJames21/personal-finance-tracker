@@ -60,3 +60,12 @@
     list-style-type: none;
 
 }
+/* MEDIA QUERIES */
+@media only screen and (max-width: 480px) {
+    .site-footer .contacts .orina h4 {
+        font-size:large;
+    }
+    .site-footer .contacts .bencity h4 {
+        font-size:large;
+    }
+}

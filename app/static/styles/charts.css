@@ -43,3 +43,12 @@
   max-height: 500px;
 
 }
+/* MEDIA QUERIES  */
+
+@media only screen and (max-width: 480px) {
+  .charts-group {
+    display: grid;
+    grid-template-columns: 1fr; /* One column */
+    grid-gap: 5px; /* Gap between grid items */
+  }
+}

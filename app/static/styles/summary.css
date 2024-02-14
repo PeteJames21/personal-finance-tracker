@@ -36,19 +36,11 @@
 
 }
 
-.current-profile,
-.header-summary,
-.switch-profiles {
-    width: 15%; /* Adjust as needed */
-    box-sizing: border-box;
 
-}
-.current-profile, .current_user{
+.from-date, .to-date{
+
     white-space:nowrap;
     margin-left: 5px;
-
-
-
 }
 .header-summary {
     width: 70%; /* Adjust as needed */
@@ -66,12 +58,13 @@
 /* STYLING ADD A PROFILE button */
 .profile-bar .add-profile .button{
     background-color: #0a93ef;
+    background-color: #ef930a;
     font-size: larger;
 }
 
 #add-profile, #switch-prof{
     display: inline-block;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     border-radius: 10px;
@@ -275,9 +268,10 @@
 }
 
 .listed_items ol {
-    margin-left: 5;
+    margin-left: 0px;
     padding: 0;
     white-space:nowrap;
+
 
 }
 
@@ -285,6 +279,94 @@
 
     color: #000000;
     margin-bottom: 5px;
+    margin-left: 0px;
 
+
+
+}
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px) {
+    *{
+        max-width: 100%;
+    }
+    .profile-bar{
+        /* background-color: #dce1fc; */
+        margin-top: 0px;
+
+    }
+    .profile-bar .head-bar{
+        margin: 0 auto;
+        /* background-color: #92a1ed; */
+        display: flex;
+        flex-direction: column;
+    }
+    .profile-bar .head-bar .filter-date{
+        margin: 5px auto;
+        font-size: small;
+
+    }
+    .profile-bar .head-bar .header-summary h3{
+        font-size:1.5rem;
+        margin-bottom: 5px;
+
+    }
+    .profile-bar .head-bar .add-profile{
+
+        font-size: 1rem;
+        padding: 0px;
+        margin: 0px;
+    }
+
+    .profile-bar .head-bar .switch-profiles .switch-label {
+       /*  background-color: #0a93ef; */
+
+        color: #0f1e6a;
+    }
+    .totals .total-income .total-label h4{
+        font-size: medium;
+    }
+    .totals .total-expense .total-label h4{
+        font-size: medium;
+    }
+    .totals .balance .total-label h4{
+        font-size: medium;
+    }
+    .totals .total-income .top-items h5{
+        font-size: medium;
+    }
+    .totals .total-expense .top-items h5{
+        font-size: medium;
+    }
+    .totals .total-income .listed_items{
+        margin-left: -15px;
+    }
+    .totals .total-income .listed_items ol{
+
+        white-space: wrap;
+    }
+    .totals .total-expense .listed_items{
+        margin-left: -15px;
+    }
+    .totals .total-expense .listed_items ol{
+
+        white-space: wrap;
+    }
+    .totals .balance .top-items h5{
+        font-size: medium;
+    }
+    .filter-date{
+
+        flex-direction: row;
+    }
+    .filter-date {
+        display: flex;
+    }
+
+    .from-date, .to-date {
+        flex: 1;
+        margin-right: 10px;
+    }
 
 }

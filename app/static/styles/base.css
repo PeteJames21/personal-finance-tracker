@@ -3,108 +3,87 @@
     --bg-color: #f2f2f2;
     --button-color: #1275c1;
     --button-border: #fff;
-
-
-}
-:root {
     --secondary-bg-light-blue: #F5F5F5;
     --tertiary-orange-bright: #fd830d;
     --secondary-dark-blue: #0f1e6a;
     --secondary-color: #f9fafe;
-
-
     --max-width: 1200px;
     --primary-bright-blue: #fff;
-  }
+}
 
-  .block-content{
-
+.block-content {
     width: var(--max-width);
     margin: 0 auto;
-  }
+}
 
 body {
-   background-color: var(--secondary-bg-light-blue);
+    background-color: var(--secondary-bg-light-blue);
 }
-/* contains styling for the navbar*/
 
+/* contains styling for the navbar*/
 * {
     margin: 0;
     padding: 0px;
     box-sizing: border-box;
     font-family: 'Roboto', sans-serif;
+}
 
+.navbar {
+    background-color: var(--primary-bright-blue); /* whaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaat */
+    /* background-color: #11bc5e; */
+    display: flex;
+    justify-content: space-between; /* Aligns the elements to the start and end of the container */
+    align-items:center;
 
 }
-.navbar {
-    background-color: var(--primary-bright-blue) ;
-    /* background-color: #5e92fa;; */
-    /* background-color:#ffffff; */
+nav .navbar-brand {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+    font-size: medium;
+
+    /* margin-right: 15px; */
+}
+nav .navbar-nav {
+       /* background-color: #ee0514; */
+       flex-direction: row;
 }
 
 
 nav {
-
-    overflow: hidden;
+    overflow:visible;
     color: rgb(255, 255, 255);
-    display: flex; /* Use flexbox */
-    justify-content: space-between; /* Distribute items with space between */
-
-}
-
-nav .navbar-brand{
-    min-width: 40%;
-/*     background-color: #f00c1b; */
-    text-align: center;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size:medium; /* In media queries, if width reduces change flex direction to column */
-
 }
-nav .navbar-brand p{
-    margin: 0 auto;
+/* logo, currentuser */
 
+
+
+nav .navbar-brand p {
+    margin: 0 auto;
     color: var(--secondary-dark-blue);
     font-weight: bold;
+    margin-right: 30px;
+}
+
+nav .navbar-nav .nav-item{
+    margin-right: 30px;
+ /*    color: var(--secondary-dark-blue); */
+    font-weight: bold;
+}
+nav .navbar-nav .nav-item a{
+    color: #ee0514;
+
 }
 
 
 
-
-/* Style for the other items on the right */
-.nav-items {
-    display: flex; /* Use flexbox for items */
-}
-
-.nav-items a {
-    padding: 14px 16px;
-    text-decoration: none;
-    color: #5e92fa;
-}
-
-/* Change color on hover */
 .nav-items a:hover {
     background-color: #ddd;
     color: black;
 }
 
-
-
-
-#navbarNav {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 5rem;
-}
-
-#navbarNav .navbar-nav .nav-item {
-    color: var(--secondary-dark-blue);
-    font-weight: bold;
-}
-#hey.navbar {
-    margin-bottom: 0;
-}
 /* styling for add transactio/account button */
 .add-transaction {
     margin: 10px;
@@ -115,7 +94,7 @@ button {
     border: 2px solid #fff;
    /*  color: var(--button-border); */
     color: white;
-    padding: 10px;
+    padding: 5px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -129,3 +108,50 @@ button:hover {
     color: #fff;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 480px) {
+
+    nav .navbar-brand p {
+        margin: 0 auto;
+        color: var(--secondary-dark-blue);
+        font-weight:normal;
+        margin-right: 5px;
+        font-size: smaller;
+
+    }
+    .navbar-brand{
+
+        width: 100%;
+        padding: 0px;
+        margin-right: 0.5rem;
+        overflow:hidden;
+    }
+    nav .navbar-nav .nav-item{
+        margin-right: 10px;
+     /*    color: var(--secondary-dark-blue); */
+        font-weight: bold;
+    }
+    .block-content{
+        margin-top: 0px;
+    }
+
+    button {
+        background-color: var(--button-color) ;
+        /* background-color:#ee0514; */
+        border: 2px solid #fff;
+        /*  color: var(--button-border); */
+        color: white;
+        padding: 2px 4px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+        border-radius: 10px;
+        transition: background-color 0.3s;
+    }
+    }
+
+
+
+  }
