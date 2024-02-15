@@ -127,7 +127,6 @@ def expense():
 
 @app.route('/logout')
 def logout():
-    flash('You have been logged out!')
     logout_user()
     return redirect(url_for('index'))
 
