@@ -120,7 +120,9 @@ class DBEngine:
         """Add an account under the profile of a specific username."""
         if account in self.db[username]['profiles'][profile]['accounts']:
             raise ValueError(f"The account '{account}' already exists"
-                             f"under the profile '{username}.{profile}'")
+                             f" under the profile '{profile}'")
+        if balance < 0:
+            raise IntegrityError('Balance cannot be negative')
         self.db[username]['profiles'][profile]['accounts'][account] = {
             'balance': balance,
             'description': description,
@@ -145,6 +147,8 @@ class DBEngine:
         account_debited = trans_details.get('account_debited')
         account_credited = trans_details.get('account_credited')
         amount = trans_details['amount']
+        if amount <= 0:
+            raise IntegrityError('Amount must be greater than 0')
         # TODO: wrap the conditionals using try/except and provide helpful error msg
         if account_debited:
             account_debited = self.db[username]['profiles'][profile]['accounts'][account_debited]
@@ -178,6 +182,8 @@ class DBEngine:
                 raise IntegrityError(
                     "Both the transaction fields 'account_credited' and "
                     "'account_debited' must be specified for transfers")
+            if account_credited == account_debited:
+                raise IntegrityError('A transfer cannot be done to the same account')
             if account_credited['balance'] - amount < 0:
                 raise IntegrityError('Transaction results in negative balance')
             account_credited['balance'] -= amount
@@ -225,7 +231,9 @@ class DBEngine:
 
     def get_profiles(self, username) -> list[str]:
         """Get a list of profiles registered under the given user."""
-        return list(self.db[username]['profiles'].keys())
+        profiles = list(self.db[username]['profiles'].keys())
+        profiles.sort()
+        return profiles
 
     def get_total_balance(self, username, profile):
         """Return sum of balances from all accounts in the given profile."""
@@ -276,6 +284,17 @@ class DBEngine:
         """Reload data from storage."""
         with open(self.__file, encoding='utf-8') as f:
             self.db = json.load(f)
+
+    def delete_user(self, username: str):
+        """Delete a user from the database"""
+        del self.db[username]
+
+    def email_exists(self, email: str) -> bool:
+        """Check if an email exists."""
+        for username in self.db.keys():
+            if self.db[username]['email'] == email:
+                return True
+        return False
 
 
 class IntegrityError(Exception):

@@ -1,5 +1,6 @@
 from io import BytesIO
 from collections import defaultdict
+from datetime import datetime
 from app import db
 import base64
 import matplotlib.pyplot as plt
@@ -61,13 +62,23 @@ def get_summary_stats(username, profile, from_=None, to=None):
     total_income = get_transactions_total(incomes)
     total_expense = get_transactions_total(expenses)
     net_income = total_income - total_expense
+    # Daily averages over the period
+    if type(from_) is str:
+        from_ = datetime.fromisoformat(from_)
+    if type(to) is str:
+        to = datetime.fromisoformat(to)
+    days = (to - from_).days + 1
+    daily_average_income = round(total_income / days)
+    daily_average_expenses = round(total_expense / days)
 
     return {
         'top_incomes': top_incomes,
         'top_expenses': top_expenses,
         'total_income': total_income,
         'total_expense': total_expense,
-        'net_income': net_income
+        'net_income': net_income,
+        'daily_average_income': daily_average_income,
+        'daily_average_expenses': daily_average_expenses
     }
 
 

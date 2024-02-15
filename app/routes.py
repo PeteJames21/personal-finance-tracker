@@ -54,7 +54,8 @@ def login():
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for('home'))
         else:
-            flash('Login unsuccessful. Please check username and password')
+            flash('Login unsuccessful. Please check username'
+                  ' and password', category='error')
     return render_template('login.html', title='Sign In', form=form)
 
 
@@ -208,7 +209,7 @@ def add_account():
             db.save()
             flash('Account added successfully', 'success')
             return redirect(url_for('home'))
-        except ValueError as e:
+        except (ValueError, IntegrityError) as e:
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form, title="Add Acount")
