@@ -22,7 +22,7 @@ Authors: Benson Maina and Peter Ndung'u
 
 ## Screenshots
 
-![screenshot of the landing page landing page ](../personal-finance-manager/app/static/images/ss1.jpg)
+![screenshot of the landing page landing page ](https://github.com/PeteJames21/personal-finance-tracker/blob/main/app/static/images/ss1.jpg)
 
 ## Contributing
 
