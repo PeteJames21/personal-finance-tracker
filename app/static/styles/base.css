@@ -56,6 +56,7 @@ nav {
     overflow:visible;
     color: var(--secondary-dark-blue);
     display: flex;
+    font-weight: bold;
 }
 /* logo, currentuser */
 
