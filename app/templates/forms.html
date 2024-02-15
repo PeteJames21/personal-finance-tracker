@@ -15,6 +15,12 @@
         .container{
             margin: 0 auto;
         }
+        /* Custom CSS for error alerts */
+        .alert-error  {
+            background-color: rgba(255, 0, 0, 0.2); /* Transparent light-red */
+            padding: 10px; /* Adjust padding as needed */
+            border: 1px solid rgba(255, 0, 0, 0.5);
+        }
     </style>
 
 </head>
@@ -34,7 +40,7 @@
         {% endwith %}
 
     {% block content %}{% endblock %}
-
+    </div>
 
 </body>
 </html>
