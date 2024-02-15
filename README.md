@@ -4,7 +4,7 @@ Personal Finance Tracker is a tool used to track personal finances. The applicat
 
 ## Authors
 
-Authors: Benson Maina and Peter Ndung'u
+Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https://github.com/PeteJames21)
 
 ## Features
 
