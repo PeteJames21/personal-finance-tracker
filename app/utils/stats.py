@@ -283,6 +283,7 @@ def donut_chart(x, labels, title='') -> str:
         return ''
     # Sample data
     fig, ax = plt.subplots(figsize=(7, 7))
+    plt.rcParams.update({'font.size': 12})
     ax.pie(x, labels=None, autopct='%1.0f%%', startangle=90)
 
     # Draw circle in the center
@@ -290,8 +291,10 @@ def donut_chart(x, labels, title='') -> str:
     ax.add_artist(centre_circle)
     # Equal aspect ratio ensures that pie is drawn as a circle
     plt.axis('equal')
+    # Use bbox_to_anchor=(1.3, 0.7) to place the legend to the right.
+    # Use y=0.3 to place it bottom right if font is increased
     plt.legend(labels, loc='upper right',
-               bbox_to_anchor=(1.3, 0.7)
+               bbox_to_anchor=(1.3, 0.3)
     )
     # Adjust the position of `ax` within `fig` to leave room for the legend
     plt.subplots_adjust(left=0, right=0.7, top=1, bottom=0)
