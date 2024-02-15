@@ -27,7 +27,3 @@ Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https:/
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
-
-## License
-
-[License information here]
