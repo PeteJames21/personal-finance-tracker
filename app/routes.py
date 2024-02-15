@@ -208,7 +208,7 @@ def add_account():
             db.save()
             flash('Account added successfully', 'success')
             return redirect(url_for('home'))
-        except ValueError as e:
+        except (ValueError, IntegrityError) as e:
             error_message = str(e)
             flash(error_message, 'error')
     return render_template('add_account.html', form=form, title="Add Acount")

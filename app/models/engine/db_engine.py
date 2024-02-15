@@ -120,7 +120,7 @@ class DBEngine:
         """Add an account under the profile of a specific username."""
         if account in self.db[username]['profiles'][profile]['accounts']:
             raise ValueError(f"The account '{account}' already exists"
-                             f"under the profile '{username}.{profile}'")
+                             f" under the profile '{profile}'")
         if balance < 0:
             raise IntegrityError('Balance cannot be negative')
         self.db[username]['profiles'][profile]['accounts'][account] = {
