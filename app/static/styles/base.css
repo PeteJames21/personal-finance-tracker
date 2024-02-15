@@ -43,28 +43,32 @@ nav .navbar-brand {
     align-items: end;
     font-size: medium;
 
+
     /* margin-right: 15px; */
 }
 nav .navbar-nav {
-       /* background-color: #ee0514; */
+
        flex-direction: row;
 }
 
 
 nav {
     overflow:visible;
-    color: rgb(255, 255, 255);
+    color: var(--secondary-dark-blue);
     display: flex;
 }
 /* logo, currentuser */
 
-
+nav p{
+    margin-right: 15px;
+}
 
 nav .navbar-brand p {
     margin: 0 auto;
     color: var(--secondary-dark-blue);
     font-weight: bold;
     margin-right: 30px;
+
 }
 
 nav .navbar-nav .nav-item{
@@ -151,7 +155,3 @@ button:hover {
         transition: background-color 0.3s;
     }
     }
-
-
-
-  }
