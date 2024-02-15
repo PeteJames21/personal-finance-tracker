@@ -2,19 +2,32 @@
 ALX Project
 Authors: Benson Maina and Peter Ndung'u
 
-Personal Finance Tracker is a tool used to track personal finances. The application allows a user to register an account, sign in, and create transactions. Once a user signs up and logs in, a default profile of 'personal' is created. Profiles allow the user to separate concerns. For instance, one can use a personal profile to track personal transactions, a work profile to track work-related transactions, or a charity profile to track transactions for a charity group. This feature allows the user to separate various monies into neat and separate places, allowing for easier accounting.
+# Personal Finance Tracker
 
-Within each profile, the user has to create an account. Accounts represent the containers that hold various monies. For instance, one can have a 'cash' account to store cash at hand, 'Mpesa' to represent money on an Mpesa account, or 'Bank 1' to store money in bank account 1.
+Personal Finance Tracker is a tool used to track personal finances. The application allows a user to register an account, sign in, and create transactions. 
 
-Once accounts are created, the user can easily add transactions as they see fit.
+## Features
 
-There are three types of transactions a user can do:
-1. Income
-2. Expense
-3. Transfer
+- **Profiles**: Users can create multiple profiles to separate different types of transactions, such as personal, work-related, or charity transactions.
+  
+- **Accounts**: Within each profile, users can create different accounts to represent various containers holding money, such as cash, Mpesa, or bank accounts.
+  
+- **Transaction Types**: Users can perform three types of transactions: Income, Expense, and Transfer.
 
-The transaction form is responsive and will display the required fields for either of the three transactions.
+- **Responsive Transaction Form**: The transaction form adapts to display the required fields for each transaction type.
 
-The dashboard on the home page offers a summary of a user's transactions. It shows the top 5 incomes and expenses, as well as the net income and average daily expenditure.
+- **Dashboard**: The home page dashboard provides a summary of the user's transactions, including the top 5 incomes and expenses, net income, and average daily expenditure.
 
-Below that, helpful visualizations are provided which portray the information in visually appealing visuals. The income and expense pages provide a detailed overview of each type of transaction. The balance page provides the current balance for each account.
+- **Visualizations**: Below the dashboard, helpful visualizations are provided to present information in visually appealing ways.
+
+## Screenshots
+
+[Add screenshots here]
+
+## Contributing
+
+Contributions are welcome! Please open an issue or submit a pull request.
+
+## License
+
+[License information here]
