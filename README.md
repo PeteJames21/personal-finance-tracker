@@ -1,17 +1,17 @@
-# personal-finance-tracker
-ALX Project
-Authors: Benson Maina and Peter Ndung'u
-
 # Personal Finance Tracker
 
-Personal Finance Tracker is a tool used to track personal finances. The application allows a user to register an account, sign in, and create transactions. 
+Personal Finance Tracker is a tool used to track personal finances. The application allows a user to register an account, sign in, and create transactions.
+
+## Authors
+
+Authors: Benson Maina and Peter Ndung'u
 
 ## Features
 
 - **Profiles**: Users can create multiple profiles to separate different types of transactions, such as personal, work-related, or charity transactions.
-  
+
 - **Accounts**: Within each profile, users can create different accounts to represent various containers holding money, such as cash, Mpesa, or bank accounts.
-  
+
 - **Transaction Types**: Users can perform three types of transactions: Income, Expense, and Transfer.
 
 - **Responsive Transaction Form**: The transaction form adapts to display the required fields for each transaction type.
@@ -22,7 +22,7 @@ Personal Finance Tracker is a tool used to track personal finances. The applicat
 
 ## Screenshots
 
-[Add screenshots here]
+![screenshot of the landing page landing page ](../personal-finance-manager/app/static/images/ss1.jpg)
 
 ## Contributing
 
