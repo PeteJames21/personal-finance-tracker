@@ -1,6 +1,6 @@
 """Handles the urls that the module supports"""
 from app import app, db
-from flask import render_template, flash, redirect, url_for, request
+from flask import render_template, flash, redirect, url_for, request, session
 from app.forms import LoginForm, RegistrationForm, TransactionForm, AddAccountForm, AddProfileForm
 from flask_login import login_user, logout_user, login_required, current_user
 from .models.user import User
@@ -127,6 +127,11 @@ def expense():
 
 @app.route('/logout')
 def logout():
+    # We don't want to remember these session variables the next time
+    # the user logs back in after deliberately logging out.
+    session.pop('start_date', None)
+    session.pop('end_date', None)
+
     logout_user()
     return redirect(url_for('index'))
 
