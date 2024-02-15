@@ -1,4 +1,6 @@
 import datetime
+import re
+from app import db
 from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, BooleanField, SubmitField, FloatField, SelectField, DateField
 from wtforms.validators import DataRequired, Length, Email, EqualTo, ValidationError, InputRequired
@@ -18,11 +20,32 @@ class RegistrationForm(FlaskForm):
                            validators=[DataRequired(), Length(min=2, max=20)])
     email = StringField('Email',
                            validators=[DataRequired(), Email()])
+    # TODO: validate password security
     password = PasswordField('Password', validators=[DataRequired()])
 
     confirm_password = PasswordField('Confirm Password',
                                      validators=[DataRequired(), EqualTo('password')])
     submit = SubmitField('Sign Up')
+
+    @staticmethod
+    def validate_username(self, username):
+        username = username.data
+        print('type: ', type(username))
+        if db.get_user_by_username(username):
+            raise ValidationError('Username already exists')
+        p = re.compile('^(?=.{2,20}$)(?![_.])(?!.*[_.]{2})[a-zA-Z0-9._]+(?<![_.])$')
+        # Username must be 2-20 chars long, must not begin/end with special chars,
+        #  can only be composed of [a-zA-Z0-9._], and must not have more than
+        #  two consecutive special chars within the string.
+        if not p.match(username):
+            raise ValidationError('Invalid username format')
+
+    @staticmethod
+    def validate_email(self, email):
+        email = email.data
+        if db.email_exists(email):
+            raise ValidationError('Email already in use. Try a different one')
+
 
 class TransactionForm(FlaskForm):
     date = DateField('Date', default=datetime.date.today, validators=[DataRequired()])

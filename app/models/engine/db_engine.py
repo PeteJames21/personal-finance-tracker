@@ -289,6 +289,13 @@ class DBEngine:
         """Delete a user from the database"""
         del self.db[username]
 
+    def email_exists(self, email: str) -> bool:
+        """Check if an email exists."""
+        for username in self.db.keys():
+            if self.db[username]['email'] == email:
+                return True
+        return False
+
 
 class IntegrityError(Exception):
     """Raised if an operation violates the integrity of the data."""
