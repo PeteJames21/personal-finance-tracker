@@ -277,6 +277,10 @@ class DBEngine:
         with open(self.__file, encoding='utf-8') as f:
             self.db = json.load(f)
 
+    def delete_user(self, username: str):
+        """Delete a user from the database"""
+        del self.db[username]
+
 
 class IntegrityError(Exception):
     """Raised if an operation violates the integrity of the data."""
