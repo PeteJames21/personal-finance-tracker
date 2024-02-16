@@ -14,7 +14,7 @@ import seaborn as sns
 matplotlib.use('svg')
 # Increase the bottom axis padding to prevent rotated tick marks from
 # being truncated.
-plt.rcParams['figure.subplot.bottom'] = 0.2
+plt.rcParams['figure.subplot.bottom'] = 0.25
 plt.rcParams['axes.titlesize'] = 14
 plt.rcParams['lines.marker'] = 'o'
 plt.rcParams['axes.labelsize'] = 14
@@ -247,7 +247,6 @@ def monthly_cash_flows(incomes: pd.Series, expenses: pd.Series,
     ax.plot(incomes, label='Total Monthly Income')
     ax.plot(expenses, label='Total Monthly Expenses')
     ax.set_title(title)
-    ax.set_xlabel('Month')
     plt.xticks(rotation=60)
     ax.legend()
     return fig_to_base64(fig)
@@ -266,7 +265,6 @@ def line_plot(data: pd.Series, title: str = '') -> str:
 
     ax.plot(data)
     ax.set_title(title)
-    ax.set_xlabel('Month')
     plt.xticks(rotation=60)
     return fig_to_base64(fig)
 
