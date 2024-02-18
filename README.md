@@ -22,7 +22,7 @@ Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https:/
 
 ## Screenshots
 
-![screenshot of the landing page landing page ](https://github.com/PeteJames21/personal-finance-tracker/blob/main/app/static/images/ss1.jpg)
+![screenshot of the landing page landing page ](https://github.com/PeteJames21/personal-finance-tracker/blob/main/app/static/images/dashboard.jpg) 
 
 ## Contributing
 
