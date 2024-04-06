@@ -1,10 +1,14 @@
 # Personal Finance Tracker
 
-Personal Finance Tracker is a tool used to track personal finances. The application allows a user to register an account, sign in, and create transactions.
+Personal Finance Tracker is a tool used to track personal finances. It allows users to record transactions, visualize them, and get key statistics that highlight income flow and spending patterns.
 
 ## Authors
 
 Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https://github.com/PeteJames21)
+
+## Deployment
+
+The application is currently hosted at https://apps.peterndungu.tech
 
 ## Features
 
