@@ -8,7 +8,7 @@ Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https:/
 
 ## Deployment
 
-The application is currently hosted at https://apps.peterndungu.tech
+The application is currently hosted at https://pft.peterndungu.tech
 
 ## Features
 
