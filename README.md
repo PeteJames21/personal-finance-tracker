@@ -6,10 +6,6 @@ Personal Finance Tracker is a tool used to track personal finances. It allows us
 
 Authors: [Benson Maina](https://github.com/Gabogogi) and [Peter Ndung'u](https://github.com/PeteJames21)
 
-## Deployment
-
-The application is currently hosted at https://pft.peterndungu.tech
-
 ## Features
 
 - **Profiles**: Users can create multiple profiles to separate different types of transactions, such as personal, work-related, or charity transactions.
